@@ -1,51 +1,123 @@
+/* ##################################################### */
+/*                        Index.html
+/* ##################################################### */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-body {
+* {
     background-color: #00083f;
     box-sizing: border-box;
-    margin: 0, auto
+    font-family: 'Montserrat', sans-serif;
+    color: white;
 }
+/* ########################## body ########################## */
+body {
+    width: 50%;
+    margin: 0 auto;
+}
+
+/* ########################## container ########################## */
 .container {
-	max-width: 1200px;
-	margin: auto;
 	padding: 16px;
-	font-family: 'Montserrat', sans-serif;
 }
+/* ########################## header ########################## */
 header {
 	display: flex;
 	flex-direction: row;
-	align-items: center;
 	margin-bottom: 16px;
 	padding: 8px;
-	background-image: linear-gradient(to bottom, rgb(72, 81, 142), rgba(0, 8, 63, 0.7));
+	background: linear-gradient(to right, #00083f, #767989, #ff1d37);
     border-radius: 15px;
-	text-align: center;
 	color: white;
 }
 header img {
-    height: 25px;
-    margin-left: 1rem;
+    width: 20%;
     border: 1px solid;
     padding: 10px;
-    border-radius: 15px 2px;
-    
+    border-radius: 15px 2px;    
 }
 header h1 {
-    flex-grow: 1;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: none;
   }
-
+/* ########################## main ########################## */
 main {
     display: flex;
     flex-direction: column;
-    margin-left: 40px;
 }
+/* ########################## section ########################## */
 section {
     margin-bottom: 20px;
 }
 section h2 {
     color: white;
 }
-section button {
-    max-width: 5%;
-}  
+
+/* ########################## best-movie-card ########################## */
+.column-best-movie-card {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+  }
+  
+    .raw-best-movie-card {
+        display: flex;
+        flex-direction: row;
+        margin: 0 auto;
+        width: 100%;
+        align-items: center;
+        border: 3px solid white;
+        border-radius: 5px;
+        }
+    .raw-best-movie-card img {
+        width: 25%;
+        padding: 20px;
+        background: none;
+        border-radius: 25px;
+
+        order: 1           
+        }
+        .raw-column-best-movie-card {
+            display: flex;
+            flex-direction: column;
+            order: 2
+        }
+        .raw-column-best-movie-card h3 {
+            color: white;
+            font-style: italic;
+            text-decoration: underline;
+            text-underline-offset: 7px;
+        }
+        .raw-column-best-movie-card p {
+            width: 50%;
+        }
+
+        .raw-column-best-movie-card button {
+            width: 25%;
+            height: 32px;
+            border-radius: 5px;
+            background: linear-gradient(to right, #00083f, #767989);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .raw-column-best-movie-card button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+/* ########################## top-rated-movies ########################## */        
+.column-top-rated-movies-list {
+    display: flex;
+    flex-direction: column;
+    }
+    .raw-top-rated-movies-list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }

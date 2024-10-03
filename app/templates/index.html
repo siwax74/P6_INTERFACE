@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JusteStreamIt</title>
     <link rel="stylesheet" type="text/css" href="../styles/style.css">
-    <script src="../js/api.js" defer></script>
+    <script type="module" src="../js/api.js" defer></script>
+
 </head>
 
 <body>
@@ -16,16 +17,17 @@
             <h1>Video a la demande</h1>
         </header>
         <main>
-            <section class="best-movie-card">
+            <section class="column-best-movie-card">
                 <h2>meilleur film</h2>
-                <div class="movie-card"></div>
+                <div class="raw-best-movie-card">
+                    <div class="raw-column-best-movie-card"></div>
+                </div>
                 <button class="btn-details">Détails</button>
-                <br>
             </section>
 
-            <section class="top-rated-movies-list">
+            <section class="column-top-rated-movies-list">
                 <h2>Film les mieux noté</h2>
-                <div class="rated-movies-list"></div>
+                <div class="raw-top-rated-movies-list"></div>
             </section>
 
             <section class="category">
@@ -40,7 +42,8 @@
 
             <section class="category">
                 <h2>Horreur</h2>
-            </section><div class="list-movies-category3"></div>
+            </section>
+            <div class="list-movies-category3"></div>
         </main>
     </div>
 </body>
