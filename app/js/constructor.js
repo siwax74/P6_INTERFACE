@@ -1,6 +1,6 @@
 export function constructorElements(allMovies, allCategories, bestMovies, bestMovie, category1, category2, category3) {
     createBestMovieElement(bestMovie);
-    createCategory1(bestMovies);
+    createBestMoviesListElements(bestMovies);
 
     function createBestMovieElement(bestMovie) {
         const sectionBestMovieCard = document.querySelector(".column-best-movie-card");
@@ -22,17 +22,21 @@ export function constructorElements(allMovies, allCategories, bestMovies, bestMo
         const buttonElement = sectionBestMovieCard.querySelector(".btn-details");
         rawColumnBestMovieCard.appendChild(buttonElement);
     }
-    function createCategory1(bestMovies) {
-        const rawTopRatedMoviesList = document.querySelector(".raw-top-rated-movies-list");
+    function createBestMoviesListElements(bestMovies) {
+        const rawColumnTopRatedMoviesList = document.querySelector(".raw-top-rated-movies-list");
         bestMovies.forEach(movie => {
+          const detailsItem = document.createElement("div");
+          detailsItem.classList.add("details-item");
           const titleElement = document.createElement("h3");
           titleElement.innerText = movie.title;
-          rawTopRatedMoviesList.appendChild(titleElement);
-          const imageElement = document.createElement("img")
-          imageElement.src = movie.image_url
-          rawTopRatedMoviesList.appendChild(imageElement);
-          const buttonElement = document.createElement("button")
-          buttonElement.classList.add("btn-details")
-          rawTopRatedMoviesList.appendChild(buttonElement);
+          detailsItem.appendChild(titleElement);
+          const imageElement = document.createElement("img");
+          imageElement.src = movie.image_url;
+          detailsItem.appendChild(imageElement);
+          const buttonElement = document.createElement("button");
+          buttonElement.classList.add("btn-details");
+          detailsItem.appendChild(buttonElement);
+          rawColumnTopRatedMoviesList.appendChild(detailsItem);
         });
+      
       }}

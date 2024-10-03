@@ -61,7 +61,8 @@ section h2 {
 .column-best-movie-card {
     display: flex;
     flex-direction: column;
-    width: 75%;
+    width: 100%;
+    margin: 0 auto;
   }
   
     .raw-best-movie-card {
@@ -115,9 +116,13 @@ section h2 {
 .column-top-rated-movies-list {
     display: flex;
     flex-direction: column;
+    width: 100%;
     }
     .raw-top-rated-movies-list {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        align-items: center;
+        margin: 0 auto;
+        width: 75%;
     }
