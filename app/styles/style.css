@@ -55,6 +55,8 @@ section {
 }
 section h2 {
     color: white;
+    border-top: 1px solid white;
+    padding: 10px;
 }
 
 /* ########################## best-movie-card ########################## */
@@ -71,8 +73,6 @@ section h2 {
         margin: 0 auto;
         width: 100%;
         align-items: center;
-        border: 3px solid white;
-        border-radius: 5px;
         }
     .raw-best-movie-card img {
         width: 25%;
@@ -88,7 +88,6 @@ section h2 {
             order: 2
         }
         .raw-column-best-movie-card h3 {
-            color: white;
             font-style: italic;
             text-decoration: underline;
             text-underline-offset: 7px;
@@ -112,7 +111,7 @@ section h2 {
             transform: scale(1.05);
             box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
         }
-/* ########################## top-rated-movies ########################## */        
+/* ########################## top-rated-movies-list ########################## */        
 .column-top-rated-movies-list {
     display: flex;
     flex-direction: column;
@@ -124,5 +123,55 @@ section h2 {
         flex-wrap: wrap;
         align-items: center;
         margin: 0 auto;
-        width: 75%;
+        width: 100%;
     }
+        .details-item {
+            display: flex;
+            flex-direction: column;
+            width: 33%;
+            align-items: center;
+        }
+        .details-item h3 {
+            width: 100%;
+            font-style: italic;
+            text-decoration: underline;
+            text-underline-offset: 7px;
+            text-align: center;
+        }
+        .details-item img {
+            width: 60%;
+        }
+        .details-item button {
+            width: 33%;
+            height: 32px;
+            margin-top: 10px;
+            border-radius: 5px;
+            background: linear-gradient(to right, #00083f, #767989);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.1s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .details-item button:hover {
+            transform: scale(1.15);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+    
+/* ########################## category1 ########################## */
+.column-category {
+    display: flex;
+    flex-direction: column;
+}
+
+.column-raw-list-movies-category1 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.column-raw-list-movies-category2 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

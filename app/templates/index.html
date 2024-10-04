@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JusteStreamIt</title>
     <link rel="stylesheet" type="text/css" href="../styles/style.css">
-    <script type="module" src="../js/api.js" defer></script>
+    <script type="module" src="../js/main.js"></script>
 
 </head>
 
@@ -18,7 +18,7 @@
         </header>
         <main>
             <section class="column-best-movie-card">
-                <h2>meilleur film</h2>
+                <h2>Meilleur film</h2>
                 <div class="raw-best-movie-card">
                     <div class="raw-column-best-movie-card">
                     </div>
@@ -27,26 +27,26 @@
             </section>
 
             <section class="column-top-rated-movies-list">
-                <h2>Film les mieux noté</h2>
-                    <div  class="raw-top-rated-movies-list">
-                    </div>
-           
+                <h2>Films les mieux noté</h2>
+                    <div class="raw-top-rated-movies-list"></div>
             </section>
 
-            <section class="category">
-                <h2>Comédie</h2>
-                <div class="list-movies-category1"></div>
+            <section class="column-category">
+                <h2 id="category-title"></h2>
+                <div class="column-raw-list-movies-category1"></div>
             </section>
 
-            <section class="category">
-                <h2>Action</h2>
-                <div class="list-movies-category2"></div>
+            <section class="column-category">
+                <h2 id="category-title-2"></h2>
+                <div class="column-raw-list-movies-category2"></div>
             </section>
 
-            <section class="category">
-                <h2>Horreur</h2>
+            <section class="column-category">
+                <h2 id="category-title-3"></h2>
+                <div class="column-raw-list-movies-category3"></div>
+                <select id="category-select">
+                </select>
             </section>
-            <div class="list-movies-category3"></div>
         </main>
     </div>
 </body>
