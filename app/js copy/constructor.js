@@ -1,9 +1,9 @@
-export function constructorElements(bestMovie, bestMovies, datasCategory1Filter, datasCategory2Filter, allCategories) {
+export function constructorElements(bestMovieFetch, allCategories, bestMovies, bestMovie, moviesInCategory1, category1Name, moviesInCategory2, category2Name, moviesInCategory3, category3Name) {
     const bestMovieElement = createBestMovieElement(bestMovie);
     const bestMoviesListElements = createBestMoviesListElements(bestMovies);
-    const category1Elements = createBestMoviesCategory1(datasCategory1Filter);
-    const category2Elements = createBestMoviesCategory2(datasCategory2Filter);
-    const category3Elements = createBestMoviesCategory3(allCategories);
+    const category1Elements = createBestMoviesCategory1(category1Name, moviesInCategory1.moviesInCategory);
+    const category2Elements = createBestMoviesCategory2(category2Name, moviesInCategory2.moviesInCategory);
+    const category3Elements = createBestMoviesCategory3(category3Name, moviesInCategory3.moviesInCategory, allCategories);
 
     const elements = [];
     elements.push(bestMovieElement);
@@ -17,7 +17,7 @@ export function constructorElements(bestMovie, bestMovies, datasCategory1Filter,
         const sectionBestMovieCard = document.querySelector(".column-best-movie-card");
         const rawBestMovieCard = document.querySelector(".raw-best-movie-card")
         const rawColumnBestMovieCard = document.querySelector(".raw-column-best-movie-card")
-    
+
         const imageElement = document.createElement("img");
         imageElement.src = bestMovie.image_url;
         rawBestMovieCard.appendChild(imageElement);
@@ -53,11 +53,11 @@ export function constructorElements(bestMovie, bestMovies, datasCategory1Filter,
         });
         return rawColumnTopRatedMoviesList;
     }
-    function createBestMoviesCategory1(datasCategory1Filter) {
+    function createBestMoviesCategory1(category1Name, moviesInCategory1) {
         const listMoviesCategory1 = document.querySelector(".column-raw-list-movies-category1");
         const categoryTitle = document.getElementById("category-title");
-        categoryTitle.textContent = datasCategory1Filter.categoryName;
-        datasCategory1Filter.movies.forEach(movie => {
+        categoryTitle.textContent = category1Name;
+        moviesInCategory1.forEach(movie => {
             const detailsItem = document.createElement("div");
             detailsItem.classList.add("details-item");
             const titleElement = document.createElement("h3");
@@ -75,11 +75,11 @@ export function constructorElements(bestMovie, bestMovies, datasCategory1Filter,
         return listMoviesCategory1;
     }
     
-    function createBestMoviesCategory2(datasCategory2Filter) {
+    function createBestMoviesCategory2(category2Name, moviesInCategory2) {
         const listMoviesCategory2 = document.querySelector(".column-raw-list-movies-category2");
         const categoryTitle = document.getElementById("category-title-2");
-        categoryTitle.textContent = datasCategory2Filter.categoryName;
-        datasCategory2Filter.movies.forEach(movie => {
+        categoryTitle.textContent = category2Name;
+        moviesInCategory2.forEach(movie => {
             const detailsItem = document.createElement("div");
             detailsItem.classList.add("details-item");
             const titleElement = document.createElement("h3");
@@ -97,9 +97,11 @@ export function constructorElements(bestMovie, bestMovies, datasCategory1Filter,
         return listMoviesCategory2;
     }
 
-    function createBestMoviesCategory3(allCategories) {
+    function createBestMoviesCategory3(category3Name, moviesInCategory3, allCategories) {
       const listMoviesCategory3 = document.querySelector(".column-raw-list-movies-category3");
-      const categoryTitle = document.getElementById("category-title-3");   
+      const categoryTitle = document.getElementById("category-title-3");
+      categoryTitle.textContent = category3Name;
+      
       const categorySelect = document.getElementById("category-select");
       allCategories.forEach(category => {
         const option = document.createElement("option");

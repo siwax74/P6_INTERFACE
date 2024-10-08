@@ -1,25 +1,29 @@
-import { FetchDatas, FetchCategories } from './fetch.js';
-import { getBestMovies, getBestMovie, getCategory1, getCategory2, getCategory3 } from './utils.js';
+import { FetchBestMovie, FetchBestMovies, FetchBestMoviesCategory, FetchAllCategories} from './fetch.js';
+import { sortBestMovies, sortBestMovie, sortMoviesCategory } from './utils.js';
 import { constructorElements } from './constructor.js';
+import { listenEvents } from './events.js';
 
 async function init() {
   try {
-    const allMovies = await FetchDatas();
-    const allCategories = await FetchCategories();
+    const bestMovieFetch = await FetchBestMovie();
+    const bestMovie = sortBestMovie(bestMovieFetch);
 
-    const bestMovies = getBestMovies(allMovies);
+    const bestMoviesFetch = await FetchBestMovies();
+    const bestMovies = sortBestMovies(bestMoviesFetch);
+    
+    const category1Name = "history"
+    const category2Name = "action"
+    const datasCategory1 = await FetchBestMoviesCategory(category1Name);
+    const datasCategory2 = await FetchBestMoviesCategory(category2Name);
+    const datasCategory1Filter = sortMoviesCategory(datasCategory1, category1Name)
+    const datasCategory2Filter = sortMoviesCategory(datasCategory2, category2Name)
 
-    const bestMovie = getBestMovie(allMovies);
+    const allCategories = await FetchAllCategories();
+    console.log(allCategories)
 
-    const moviesInCategory1 = getCategory1(allCategories, allMovies);
-    const category1Name = moviesInCategory1.category.name;
+    const elements = constructorElements(bestMovie, bestMovies, datasCategory1Filter, datasCategory2Filter, allCategories);
 
-    const moviesInCategory2= getCategory2(allCategories, allMovies);
-    const category2Name = moviesInCategory2.category.name;
-
-    const moviesInCategory3 = getCategory3(allCategories, allMovies);
-    console.log("undif", moviesInCategory3)
-    constructorElements(allMovies, allCategories, bestMovies, bestMovie, moviesInCategory1, category1Name, moviesInCategory2, category2Name, moviesInCategory3);
+    listenEvents(elements)
   } catch (error) {
     console.error(error);
   }
