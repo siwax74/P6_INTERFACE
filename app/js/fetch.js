@@ -1,22 +1,5 @@
-export async function FetchBestMovie() {
-  const url = "http://localhost:8000/api/v1/titles/?imdb_score_min=5&page_size=85851";
-  try {
-    const response = await fetch(url);
-
-    if (!response.ok) {
-      throw new Error(`Erreur HTTP! Statut: ${response.status}`);
-    }
-
-    const data = await response.json();
-    return data.results;
-  } catch (error) {
-    console.error("Erreur lors de la récupération des données :", error);
-    return [];
-  }
-}
-
 export async function FetchBestMovies() {
-  const url = "http://localhost:8000/api/v1/titles/?imdb_score_min=5&page_size=85851";
+  const url = "http://localhost:8000/api/v1/titles/?imdb_score_min=9&page_size=50";
   try {
     const response = await fetch(url);
 
@@ -34,7 +17,7 @@ export async function FetchBestMovies() {
 
 export async function FetchBestMoviesCategory(categoryName) {
   try {
-    const response = await fetch(`http://localhost:8000/api/v1/titles/?imdb_score_min=5&page_size=85851&genre=${categoryName}`);
+    const response = await fetch(`http://localhost:8000/api/v1/titles/?imdb_score_min=8&page_size=50&genre=${categoryName}`);
     const datas = await response.json();
     return datas;
   } catch (error) {
