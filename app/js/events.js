@@ -1,6 +1,4 @@
 export function listenEvents(elements) {
-    console.log(elements);
-
     const elements0 = elements[0];
     const elements1 = elements[1];
     const elements2 = elements[2];
@@ -17,7 +15,6 @@ export function listenEvents(elements) {
     // Fonction qui gère l'écouteur pour le premier élément
     function eventsListenerBestBook(elements0) {
         const button = elements0.querySelector('button');
-        console.log(button);
         button.addEventListener('click', function () {
             console.log('Clic sur le bouton du premier élément');
         });
@@ -26,7 +23,6 @@ export function listenEvents(elements) {
     // Fonction qui gère l'écouteur pour le deuxième élément
     function eventsListenerBestBooks(elements1) {
         const buttons = elements1.querySelectorAll('button');
-        console.log(buttons);
         buttons.forEach(function(button) {
             button.addEventListener('click', function () {
                 console.log('Clic sur le bouton du deuxième élément');
@@ -37,7 +33,6 @@ export function listenEvents(elements) {
     // Fonction qui gère l'écouteur pour le troisième élément
     function eventsListenerCategory1(elements2) {
         const buttons = elements2.querySelectorAll('button');
-        console.log(buttons);
         buttons.forEach(function(button) {
             button.addEventListener('click', function () {
                 console.log('Clic sur le bouton du troisième élément');
@@ -48,7 +43,6 @@ export function listenEvents(elements) {
     // Fonction qui gère l'écouteur pour le quatrième élément
     function eventsListenerCategory2(elements3) {
         const buttons = elements3.querySelectorAll('button');
-        console.log(buttons);
         buttons.forEach(function(button) {
             button.addEventListener('click', function () {
                 console.log('Clic sur le bouton du quatrième élément');
@@ -60,8 +54,6 @@ export function listenEvents(elements) {
     function eventsListenerCategory3(elements4) {
         const buttons = elements4.querySelectorAll('button');
         const select = document.getElementById('category-select');
-        console.log(select)
-        console.log(buttons);
         buttons.forEach(function(button) {
             button.addEventListener('click', function () {
                 console.log('Clic sur le bouton du quatrième élément');

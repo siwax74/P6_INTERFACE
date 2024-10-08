@@ -1,9 +1,9 @@
-export function constructorElements(bestMovie, bestMovies, datasCategory1Filter, datasCategory2Filter, allCategories) {
+export function constructorElements(bestMovie, bestMovies, datasCategory1Filter, datasCategory2Filter, allCategories, selectedCategory, datasCategory3Filter) {
     const bestMovieElement = createBestMovieElement(bestMovie);
     const bestMoviesListElements = createBestMoviesListElements(bestMovies);
     const category1Elements = createBestMoviesCategory1(datasCategory1Filter);
     const category2Elements = createBestMoviesCategory2(datasCategory2Filter);
-    const category3Elements = createBestMoviesCategory3(allCategories);
+    const category3Elements = createBestMoviesCategory3(allCategories, selectedCategory, datasCategory3Filter);
 
     const elements = [];
     elements.push(bestMovieElement);
@@ -97,33 +97,39 @@ export function constructorElements(bestMovie, bestMovies, datasCategory1Filter,
         return listMoviesCategory2;
     }
 
-    function createBestMoviesCategory3(allCategories) {
-      const listMoviesCategory3 = document.querySelector(".column-raw-list-movies-category3");
-      const categoryTitle = document.getElementById("category-title-3");   
-      const categorySelect = document.getElementById("category-select");
-      allCategories.forEach(category => {
-        const option = document.createElement("option");
-        option.value = category.name;
-        option.textContent = category.name;
-        categorySelect.appendChild(option);
-      });
-    
-      moviesInCategory3.forEach(movie => {
-        const detailsItem = document.createElement("div");
-        detailsItem.classList.add("details-item");
-        const titleElement = document.createElement("h3");
-        titleElement.innerText = movie.title;
-        detailsItem.appendChild(titleElement);
-        const imageElement = document.createElement("img");
-        imageElement.src = movie.image_url;
-        detailsItem.appendChild(imageElement);
-        const buttonElement = document.createElement("button");
-        buttonElement.classList.add("btn-details");
-        buttonElement.textContent = "détails";
-        detailsItem.appendChild(buttonElement);
-        listMoviesCategory3.appendChild(detailsItem);
-      });
-      return listMoviesCategory3; 
+    function createBestMoviesCategory3(allCategories, selectedCategory, datasCategory3Filter) {
+        const listMoviesCategory3 = document.querySelector(".column-raw-list-movies-category3");
+        const categoryTitle = document.getElementById("category-title-3");
+        categoryTitle.textContent = datasCategory3Filter.categoryName.name;
+        const categorySelect = document.getElementById("category-select");
+      
+        // Crée le menu du choix déroulant
+        allCategories.forEach(category => {
+          const option = document.createElement("option");
+          option.value = category.name;
+          option.textContent = category.name;
+          if (category.name === selectedCategory) {
+            option.selected = true;
+          }
+          categorySelect.appendChild(option);
+        });
+        // Crée la liste de détails des livres de la catégorie choisi
+        datasCategory3Filter.movies.forEach(movie => {
+          const detailsItem = document.createElement("div");
+          detailsItem.classList.add("details-item");
+          const titleElement = document.createElement("h3");
+          titleElement.innerText = movie.title;
+          detailsItem.appendChild(titleElement);
+          const imageElement = document.createElement("img");
+          imageElement.src = movie.image_url;
+          detailsItem.appendChild(imageElement);
+          const buttonElement = document.createElement("button");
+          buttonElement.classList.add("btn-details");
+          buttonElement.textContent = "détails";
+          detailsItem.appendChild(buttonElement);
+          listMoviesCategory3.appendChild(detailsItem);
+        });
+      
+        return listMoviesCategory3;
+      }
     }
-    
-}

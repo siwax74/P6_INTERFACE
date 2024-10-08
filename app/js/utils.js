@@ -12,3 +12,7 @@ export function sortMoviesCategory(data, categoryName) {
     movies: data.results.sort((a, b) => b.imdb_score - a.imdb_score).slice(0, 6)
   };
 }
+
+export function sortSeletedCategory(categories) {
+    return categories[6];
+}

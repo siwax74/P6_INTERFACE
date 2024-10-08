@@ -34,7 +34,6 @@ export async function FetchAllCategories() {
       throw new Error(`Erreur HTTP! Statut: ${response.status}`);
     }
     const data = await response.json();
-    console.log(data.results)
     return data.results;
   } catch (error) {
     console.error("Erreur lors de la récupération des données :", error);

@@ -163,18 +163,21 @@ section h2 {
 .column-category {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .column-raw-list-movies-category1 {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    width: 60%;
 }
 
 .column-raw-list-movies-category2 {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    width: 60%;
 }
 
 .column-raw-list-movies-category3 {
