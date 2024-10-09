@@ -1,28 +1,30 @@
+import { FetchBestMoviesCategory } from './fetch.js';
+
 export function listenEvents(elements) {
-    const elements0 = elements[0];
-    const elements1 = elements[1];
-    const elements2 = elements[2];
-    const elements3 = elements[3];
-    const elements4 = elements[4];
+    const bestMovieElement = elements[0];
+    const bestMoviesListElements = elements[1];
+    const category1Elements = elements[2];
+    const category2Elements = elements[3];
+    const category3Elements = elements[4];
 
     // On appelle les deux fonctions pour attacher les écouteurs d'événements
-    eventsListenerBestBook(elements0);
-    eventsListenerBestBooks(elements1);
-    eventsListenerCategory1(elements2);
-    eventsListenerCategory2(elements3);
-    eventsListenerCategory3(elements4)
+    eventsListenerBestBook(bestMovieElement);
+    eventsListenerBestBooks(bestMoviesListElements);
+    eventsListenerCategory1(category1Elements);
+    eventsListenerCategory2(category2Elements);
+    eventsListenerCategory3(category3Elements)
 
-    // Fonction qui gère l'écouteur pour le premier élément
-    function eventsListenerBestBook(elements0) {
-        const button = elements0.querySelector('button');
+    // Fonction qui gère l'écouteur pour le meilleur film
+    function eventsListenerBestBook(bestMovieElement) {
+        const button = bestMovieElement.querySelector('button');
         button.addEventListener('click', function () {
             console.log('Clic sur le bouton du premier élément');
         });
     }
 
-    // Fonction qui gère l'écouteur pour le deuxième élément
-    function eventsListenerBestBooks(elements1) {
-        const buttons = elements1.querySelectorAll('button');
+    // Fonction qui gère l'écouteur pour les 6 meilleurs films
+    function eventsListenerBestBooks(bestMoviesListElements) {
+        const buttons = bestMoviesListElements.querySelectorAll('button');
         buttons.forEach(function(button) {
             button.addEventListener('click', function () {
                 console.log('Clic sur le bouton du deuxième élément');
@@ -30,9 +32,9 @@ export function listenEvents(elements) {
         });
     }
 
-    // Fonction qui gère l'écouteur pour le troisième élément
-    function eventsListenerCategory1(elements2) {
-        const buttons = elements2.querySelectorAll('button');
+    // Fonction qui gère l'écouteur pour la première catégorie
+    function eventsListenerCategory1(category1Elements) {
+        const buttons = category1Elements.querySelectorAll('button');
         buttons.forEach(function(button) {
             button.addEventListener('click', function () {
                 console.log('Clic sur le bouton du troisième élément');
@@ -40,9 +42,9 @@ export function listenEvents(elements) {
         });
     }
     
-    // Fonction qui gère l'écouteur pour le quatrième élément
-    function eventsListenerCategory2(elements3) {
-        const buttons = elements3.querySelectorAll('button');
+    // Fonction qui gère l'écouteur pour la deuxieme catégorie
+    function eventsListenerCategory2(category2Elements) {
+        const buttons = category2Elements.querySelectorAll('button');
         buttons.forEach(function(button) {
             button.addEventListener('click', function () {
                 console.log('Clic sur le bouton du quatrième élément');
@@ -50,21 +52,18 @@ export function listenEvents(elements) {
         });
     }
     
-    // Fonction qui gère l'écouteur pour le cinquième élément
-    function eventsListenerCategory3(elements4) {
-        const buttons = elements4.querySelectorAll('button');
+    function eventsListenerCategory3(category3Elements) {
+        const buttons = category3Elements.querySelectorAll('button');
         const select = document.getElementById('category-select');
         buttons.forEach(function(button) {
             button.addEventListener('click', function () {
                 console.log('Clic sur le bouton du quatrième élément');
             });
         });
-        select.addEventListener('click', function() {
-            console.log('Clic sur le select du quatrième élément');
-            });
-        select.addEventListener('change', function() {
-            console.log('selection changé');
+        select.addEventListener('change', async function() {
+            const selectedCategory = select.value;
+            const datas = await FetchBestMoviesCategory(selectedCategory);
+            updateCategory3Elements(datas);
         });
     }
-
 }
