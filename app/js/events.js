@@ -1,5 +1,13 @@
-import { FetchBestMoviesCategory } from './fetch.js';
+// ################################################################################################################# //
+// ################################################## EVENTS.JS #################################################### //
+// ################################################################################################################# //
 
+// IMPORT DES MODULES ############################################################################################## //
+import { FetchBestMoviesCategory } from './fetch.js';
+import { updateCategory3 } from './constructor.js';
+import { sortMoviesCategory } from './utils.js';
+
+// ECOUTEURS D'EVENEMENTS DU DOM ################################################################################### //
 export function listenEvents(elements) {
     const bestMovieElement = elements[0];
     const bestMoviesListElements = elements[1];
@@ -7,7 +15,7 @@ export function listenEvents(elements) {
     const category2Elements = elements[3];
     const category3Elements = elements[4];
 
-    // On appelle les deux fonctions pour attacher les écouteurs d'événements
+    // On appelle les fonctions pour attacher les écouteurs d'événements
     eventsListenerBestBook(bestMovieElement);
     eventsListenerBestBooks(bestMoviesListElements);
     eventsListenerCategory1(category1Elements);
@@ -52,18 +60,25 @@ export function listenEvents(elements) {
         });
     }
     
+    // Gestion spécifique des événements pour la troisième catégorie (catégorie sélectionnable)
     function eventsListenerCategory3(category3Elements) {
         const buttons = category3Elements.querySelectorAll('button');
         const select = document.getElementById('category-select');
-        buttons.forEach(function(button) {
-            button.addEventListener('click', function () {
-                console.log('Clic sur le bouton du quatrième élément');
+        
+        // Ajouter des écouteurs aux boutons dans la catégorie 3
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                console.log('Clic sur le bouton du film dans la troisième catégorie');
             });
         });
+
+        // Gérer le changement de catégorie via le menu déroulant
         select.addEventListener('change', async function() {
             const selectedCategory = select.value;
-            const datas = await FetchBestMoviesCategory(selectedCategory);
-            updateCategory3Elements(datas);
+            const datasCategory3 = await FetchBestMoviesCategory(selectedCategory);
+            const datasCategory3Filter = sortMoviesCategory(datasCategory3, selectedCategory)
+            // Créer et afficher les films de la nouvelle catégorie
+            updateCategory3(datasCategory3Filter);
         });
     }
 }

@@ -1,5 +1,11 @@
+// ################################################################################################################# //
+// ################################################## FETCH.JS ##################################################### //
+// ################################################################################################################# //
+
+// FETCH LES MEILLEURS FILMS ####################################################################################### //
 export async function FetchBestMovies() {
-  const url = "http://localhost:8000/api/v1/titles/?imdb_score_min=9&page_size=50";
+  const url =
+    "http://localhost:8000/api/v1/titles/?imdb_score_min=9&page_size=50";
   try {
     const response = await fetch(url);
 
@@ -14,10 +20,12 @@ export async function FetchBestMovies() {
     return [];
   }
 }
-
+// FETCH LES MEILLEURS FILMS PAR CATEGORIES ######################################################################## //
 export async function FetchBestMoviesCategory(categoryName) {
   try {
-    const response = await fetch(`http://localhost:8000/api/v1/titles/?imdb_score_min=8&page_size=50&genre=${categoryName}`);
+    const response = await fetch(
+      `http://localhost:8000/api/v1/titles/?imdb_score_min=8&page_size=50&genre=${categoryName}`,
+    );
     const datas = await response.json();
     return datas;
   } catch (error) {
@@ -25,7 +33,7 @@ export async function FetchBestMoviesCategory(categoryName) {
     return [];
   }
 }
-
+// FETCH LES NOMS DES CATEGORIES DISPONIBLE ######################################################################## //
 export async function FetchAllCategories() {
   try {
     const url = "http://localhost:8000/api/v1/genres/?page_size=25";
