@@ -3,9 +3,9 @@
 // ################################################################################################################# //
 
 // FETCH LES MEILLEURS FILMS ####################################################################################### //
-export async function FetchBestMovies() {
-  const url =
-    "http://localhost:8000/api/v1/titles/?imdb_score_min=9&page_size=50";
+export async function FetchBestMovies(protocol, domain, urlApi) {
+  let url =
+    `${protocol}://${domain}/${urlApi}/titles/?imdb_score_min=9&page_size=50`;
   try {
     const response = await fetch(url);
 
@@ -21,11 +21,11 @@ export async function FetchBestMovies() {
   }
 }
 // FETCH LES MEILLEURS FILMS PAR CATEGORIES ######################################################################## //
-export async function FetchBestMoviesCategory(categoryName) {
+export async function FetchBestMoviesCategory(protocol, domain, urlApi, categoryName) {
+  let url =
+    `${protocol}://${domain}/${urlApi}/titles/?imdb_score_min=8&page_size=50&genre=${categoryName}`;
   try {
-    const response = await fetch(
-      `http://localhost:8000/api/v1/titles/?imdb_score_min=8&page_size=50&genre=${categoryName}`,
-    );
+    const response = await fetch(url);
     const datas = await response.json();
     return datas;
   } catch (error) {
@@ -34,9 +34,10 @@ export async function FetchBestMoviesCategory(categoryName) {
   }
 }
 // FETCH LES NOMS DES CATEGORIES DISPONIBLE ######################################################################## //
-export async function FetchAllCategories() {
+export async function FetchAllCategories(protocol, domain, urlApi,) {
+  let url = 
+    `${protocol}://${domain}/${urlApi}/genres/?page_size=25`;
   try {
-    const url = "http://localhost:8000/api/v1/genres/?page_size=25";
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`Erreur HTTP! Statut: ${response.status}`);

@@ -8,7 +8,7 @@ import { updateCategory3 } from './constructor.js';
 import { sortMoviesCategory } from './utils.js';
 
 // ECOUTEURS D'EVENEMENTS DU DOM ################################################################################### //
-export function listenEvents(elements) {
+export function listenEvents(elements, protocol, domain, urlApi) {
     const bestMovieElement = elements[0];
     const bestMoviesListElements = elements[1];
     const category1Elements = elements[2];
@@ -75,7 +75,7 @@ export function listenEvents(elements) {
         // Gérer le changement de catégorie via le menu déroulant
         select.addEventListener('change', async function() {
             const selectedCategory = select.value;
-            const datasCategory3 = await FetchBestMoviesCategory(selectedCategory);
+            const datasCategory3 = await FetchBestMoviesCategory(protocol, domain, urlApi, selectedCategory);
             const datasCategory3Filter = sortMoviesCategory(datasCategory3, selectedCategory)
             // Créer et afficher les films de la nouvelle catégorie
             updateCategory3(datasCategory3Filter);
