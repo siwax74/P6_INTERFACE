@@ -63,8 +63,17 @@ main {
 }
 
 /* SECTION ######################################################################################################### */
+/* SECTION ######################################################################################################### */
 h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 10px;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
 }
 
 section {
@@ -93,7 +102,6 @@ select {
         background-image: url('/app/images/best_movie.png');
         background-size: cover;
         margin-right: 10px;
-        vertical-align: middle;
         color: wheat;
         }
     .best-movie__card {
@@ -153,7 +161,6 @@ select {
         background-image: url('/app/images/best_movies.png');
         background-size: cover;
         margin-right: 10px;
-        vertical-align: middle;
         color: wheat;
         }
 
@@ -203,6 +210,8 @@ select {
             width: 97.7%;
             height: 35%; /* Épaisseur de la ligne */
             background-color: rgba(0, 0, 0, 0.5); /* Couleur semi-transparente pour la ligne */
+            border-right: 1px solid red;
+            border-left: 1px solid red;
         }
         
 
@@ -218,13 +227,12 @@ select {
 .category h2::before {
     content: "";
     display: inline-block;
-    width: 25px;
-    height: 25px;
+    width: 40px;
+    height: 40px;
     background-image: url('/app/images/category.png');
     background-size: cover;
     margin-right: 10px;
-    vertical-align: middle;
-    color: wheat;
+    color: white;
     }
 
 #category1__title,
@@ -296,9 +304,8 @@ select {
     background: linear-gradient(to right, #00083f, #767989);
     color: white;
     border: none;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid red;
+    box-shadow: 0px 0px 0px 2px rgb(204 45 45 / 50%);
     z-index: 1000;
     opacity: 0.7;
 }
@@ -361,10 +368,8 @@ select {
     margin: 0 auto;
     background: linear-gradient(to right, #00083f, #767989);
     color: white;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid red;
+    box-shadow: 0px 0px 0px 2px rgb(204 45 45 / 50%);
     z-index: 1000;
     opacity: 0.7;
     margin-bottom: 25px;
