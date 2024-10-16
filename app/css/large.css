@@ -1,0 +1,53 @@
+/* ################################################################################################################# */
+/* ################################################## LARGE.CSS #################################################### */
+/* ################################################################################################################# */
+    
+/* DESKTOP */
+@media(min-width: 1280px) {
+    /* TABLET_LAPTOP */
+    h2 {
+        margin-left: 250px;
+    }
+        /* MEILLEUR FILM */
+        .best-movie__card{
+            width: 30%;
+        }
+        .best-movie__card img {
+            aspect-ratio: 1/1;   
+        }
+        .best-movie__details .details {
+            width: 50%;
+        }
+
+        /* MEILLEUR FILMS */
+        .best-movies__cards {
+            width: 50%;
+        }
+        .best-movies__card {
+            width: 30%;
+        }
+        .best-movies__card img {
+            width: 100%;
+
+        }
+        .best-movies__card.hidden {
+            display: flex;
+        }
+        /* CATEGORY */
+        .category1__cards,
+        .category2__cards,
+        .category3__cards {
+            width: 50%;
+        }
+        .category__card {
+            width: 30%;
+        }
+        .category__card.hidden {
+            display: flex;
+        }
+
+        .btn-show-more {
+            display: none;
+        }
+    }
+    

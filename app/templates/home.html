@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JusteStreamIt</title>
+    <link rel="stylesheet" type="text/css" href="../css/small.css">
+    <link rel="stylesheet" type="text/css" href="../css/medium.css">
+    <link rel="stylesheet" type="text/css" href="../css/large.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <a href="http://127.0.0.1:5500/app/templates/home.html"><img src="../images/logo.png" alt="LOGO"></a>
+            <h1>Video a la demande</h1>
+        </header>
+        <main>
+            <section class="best-movie">
+                <h2>Meilleur film</h2>
+                <div class="best-movie__card">
+                    <div class="best-movie__details"></div>
+                </div>
+            </section>
+
+            <section class="best-movies">
+                <h2>Films les mieux notés</h2>
+                    <div class="best-movies__cards"></div>
+                    <button class="btn-show-more" id="showMoreBtn">Voir plus</button>
+            </section>
+
+            <section class="category">
+                <h2 id="category1__title"></h2>
+                <div class="category1__cards"></div>
+                <button class="btn-show-more" id="showMoreBtn2">Voir plus</button>
+            </section>
+
+            <section class="category">
+                <h2 id="category2__title"></h2>
+                <div class="category2__cards"></div>
+                <button class="btn-show-more" id="showMoreBtn3">Voir plus</button>
+            </section>
+
+            <section class="category">
+                <h2 id="category3__title"></h2>
+                <div class="category3__cards"></div>
+                <button class="btn-show-more" id="showMoreBtn4">Voir plus</button>
+                <select id="category-select"></select>
+
+            </section>
+        </main>
+    </div>
+    <script type="module" src="../js/main.js"></script>
+</body>
+
+</html>

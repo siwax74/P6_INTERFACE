@@ -1,0 +1,29 @@
+/* ################################################################################################################# */
+/* ################################################## MEDIUM.CSS #################################################### */
+/* ################################################################################################################# */
+    
+/* TABLET_LAPTOT */
+@media(min-width: 768px) {
+
+/* TABLET_LAPTOP */
+    /* MEILLEUR FILM */
+    .best-movie__details .details {
+        width: 50%;
+    }
+    /* MEILLEUR FILMS */
+    .best-movies__card {
+        width: 50%;
+    }
+    .best-movies__card:nth-child(3),
+    .best-movies__card:nth-child(4) {
+        display: flex;
+    }
+    /* CATEGORY */
+    .category__card {
+        width: 50%;
+    }
+    .category__card:nth-child(3),
+    .category__card:nth-child(4) {
+        display: flex;
+    }
+}
