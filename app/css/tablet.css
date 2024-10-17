@@ -1,0 +1,99 @@
+/* ################################################################################################################# */
+/* ################################################## MEDIUM.CSS #################################################### */
+/* ################################################################################################################# */
+    
+/* TABLET */
+@media(min-width: 768px) {
+.container {
+    width: 65%;
+}
+h2 {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: inherit;
+}
+h3 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+    /* HEADER */
+    header h1{
+        display: flex;
+        background: none;
+        text-shadow: 0 0 10px black;
+        justify-content: flex-start;
+        
+    }
+    /* MEILLEUR FILM */
+    .best-movie__card {
+        display: flex;
+        flex-direction: row;
+    }
+    .best-movie__card img {
+        aspect-ratio: inherit;
+    }
+    .best-movie__details h2 {
+        padding-left: 10px;
+    }
+    .best-movie__details .details {
+        width: 50%;
+    }
+    /* MEILLEUR FILMS */
+    .best-movies__card {
+        width: 50%;
+    }
+    .best-movies__card::after {
+        width: 93%;
+    }
+    .best-movies__card:nth-child(1),
+    .best-movies__card:nth-child(3) {
+        display: flex;
+        padding-right: 18px
+    }
+    .best-movies__card:nth-child(2),
+    .best-movies__card:nth-child(4) {
+        display: flex;
+        padding-left: 18px;
+    }
+    .best-movies__card:nth-child(5) {
+        padding-right: 18px;
+    }
+    .best-movies__card:nth-child(6) {
+        padding-left: 18px;
+    }
+    .best-movies__card:nth-child(1) button,
+    .best-movies__card:nth-child(3) button,
+    .best-movies__card:nth-child(5) button {
+
+        left: 53%;
+    }
+
+    /* CATEGORY */
+    .category__card {
+        width: 50%;
+    }
+    .category__card::after {
+        width: 93%;
+    }
+    .category__card:nth-child(1),
+    .category__card:nth-child(3) {
+        display: flex;
+        padding-right: 18px;
+    }
+    .category__card:nth-child(2),
+    .category__card:nth-child(4) {
+        display: flex;
+        padding-left: 18px;
+    }
+    .category__card:nth-child(5) {
+        padding-right: 18px;
+    }
+    .category__card:nth-child(6) {
+        padding-left: 18px;
+    }
+    .category__card:nth-child(1) button,
+    .category__card:nth-child(3) button,
+    .category__card:nth-child(5) button {
+        left: 53%;
+    }
+}

@@ -9,7 +9,7 @@ export function sortBestMovie(bestMovieFetch) {
 
 // TRIE ET SORT LES MEILLEURS FILMS ################################################################################ //
 export function sortBestMovies(bestMoviesFetch) {
-  console.log("fetch", bestMoviesFetch.sort((a, b) => b.imdb_score - a.imdb_score).slice(1, 7))
+  console.log("fetch", bestMoviesFetch.sort((a, b) => b.imdb_score - a.imdb_score).slice(1, 7));
   return bestMoviesFetch.sort((a, b) => b.imdb_score - a.imdb_score).slice(1, 7);
 }
 
@@ -18,14 +18,14 @@ export function sortMoviesCategory(data, categoryName) {
   const sortedMovies = data.results.sort((a, b) => b.imdb_score - a.imdb_score);
   return {
     categoryName,
-    movies: sortedMovies.slice(0, 6)
+    movies: sortedMovies.slice(0, 6),
   };
 }
-
+// TRIE ET SORT LE FILM EN TABLEAU DEPUIS LA PROMESSE ############################################################## //
 export function sortMovieFetchByName(movieFetch) {
   // Vérifiez si movie est un objet et contient les informations nécessaires
   if (movieFetch) {
-      return movieFetch.results[0]; // Retourne un tableau avec le premier élément
+    return movieFetch.results[0]; // Retourne un tableau avec le premier élément
   }
   return []; // Retourne un tableau vide si movie n'est pas valide
 }

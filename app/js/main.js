@@ -11,9 +11,9 @@ import { listenEvents } from "./events.js";
 // FONCTIONS PRINCIPALES ########################################################################################### //
 async function init() {
   try {
-    const protocol = "http"
-    const domain = "localhost:8000"
-    const urlApi = "api/v1"
+    const protocol = "http";
+    const domain = "localhost:8000";
+    const urlApi = "api/v1";
 
     // Récupère 50 films avec une note au dessu de 9
     const bestMoviesFetch = await FetchBestMovies(protocol, domain, urlApi);
@@ -28,26 +28,17 @@ async function init() {
     // Récupère la Catégorie 1 et ces films
     const category1Name = "History";
     const datasCategory1 = await FetchBestMoviesCategory(protocol, domain, urlApi, category1Name);
-    const datasCategory1Filter = sortMoviesCategory(
-      datasCategory1,
-      category1Name,
-    );
+    const datasCategory1Filter = sortMoviesCategory(datasCategory1, category1Name);
 
     // Récupère la Catégorie 2 et ces films
     const category2Name = "Action";
     const datasCategory2 = await FetchBestMoviesCategory(protocol, domain, urlApi, category2Name);
-    const datasCategory2Filter = sortMoviesCategory(
-      datasCategory2,
-      category2Name,
-    );
+    const datasCategory2Filter = sortMoviesCategory(datasCategory2, category2Name);
 
     // Récupère la Catégorie 3 et ces films
     const category3Name = "Comedy";
     const datasCategory3 = await FetchBestMoviesCategory(protocol, domain, urlApi, category3Name);
-    const datasCategory3Filter = sortMoviesCategory(
-      datasCategory3,
-      category3Name,
-    );
+    const datasCategory3Filter = sortMoviesCategory(datasCategory3, category3Name);
 
     // Récupère toutes les catégories
     const allCategories = await FetchAllCategories(protocol, domain, urlApi);

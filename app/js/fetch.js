@@ -4,8 +4,7 @@
 
 // FETCH LES MEILLEURS FILMS ####################################################################################### //
 export async function FetchBestMovies(protocol, domain, urlApi) {
-  let url =
-    `${protocol}://${domain}/${urlApi}/titles/?imdb_score_min=9&page_size=50`;
+  let url = `${protocol}://${domain}/${urlApi}/titles/?imdb_score_min=9&page_size=50`;
   try {
     const response = await fetch(url);
 
@@ -22,22 +21,20 @@ export async function FetchBestMovies(protocol, domain, urlApi) {
 }
 
 export async function fetchMovieDetails(protocol, domain, urlApi, bestMovie) {
-  let url =
-   `${protocol}://${domain}/${urlApi}/titles/${bestMovie.id}`
-   try {
+  let url = `${protocol}://${domain}/${urlApi}/titles/${bestMovie.id}`;
+  try {
     const response = await fetch(url);
     const datas = await response.json();
     return datas;
-   } catch (error) {
+  } catch (error) {
     console.error("Erreur lors de la récupération des données :", error);
     return [];
-   }
+  }
 }
 
 // FETCH LES MEILLEURS FILMS PAR CATEGORIES ######################################################################## //
 export async function FetchBestMoviesCategory(protocol, domain, urlApi, categoryName) {
-  let url =
-    `${protocol}://${domain}/${urlApi}/titles/?imdb_score_min=8&page_size=50&genre=${categoryName}`;
+  let url = `${protocol}://${domain}/${urlApi}/titles/?imdb_score_min=8&page_size=50&genre=${categoryName}`;
   try {
     const response = await fetch(url);
     const datas = await response.json();
@@ -49,8 +46,7 @@ export async function FetchBestMoviesCategory(protocol, domain, urlApi, category
 }
 // FETCH LES NOMS DES CATEGORIES DISPONIBLE ######################################################################## //
 export async function FetchAllCategories(protocol, domain, urlApi) {
-  let url = 
-    `${protocol}://${domain}/${urlApi}/genres/?page_size=25`;
+  let url = `${protocol}://${domain}/${urlApi}/genres/?page_size=25`;
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -63,9 +59,9 @@ export async function FetchAllCategories(protocol, domain, urlApi) {
     return [];
   }
 }
-
+// FETCH UN LIVRE PAR SON NOM ##################################################################################### //
 export async function fetchMovieByName(protocol, domain, urlApi, movieTitle) {
-  let url = `${protocol}://${domain}/${urlApi}/titles/?title=${movieTitle}`
+  let url = `${protocol}://${domain}/${urlApi}/titles/?title=${movieTitle}`;
   try {
     const response = await fetch(url);
     const datas = await response.json();

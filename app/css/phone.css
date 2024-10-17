@@ -1,0 +1,353 @@
+/* ################################################################################################################# */
+/* ################################################## SMALL.CSS #################################################### */
+/* ################################################################################################################# */
+
+/* MOBIL-FIRST */
+* {
+    background-color: #00083f;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    margin: 0;
+  }
+  
+  /* BODY ############################################################################################################ */
+  body {
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  /* CONTAINER ####################################################################################################### */
+  .container {
+    width: 70%;
+    margin: 0 auto;
+  }
+  
+  /* HEADER ########################################################################################################## */
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #00083f, #767989, #ff1d37);
+    color: white;
+  }
+  header a {
+    background: None;
+    display: flex;
+    justify-content: center;
+  }
+  header img {
+    width: 100%;
+    background: none;
+    object-fit: contain;
+  }
+  header h1 {
+    display: none;
+    width: 100%;
+  }
+  
+  /* MAIN ############################################################################################################ */
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* SECTION ######################################################################################################### */
+  h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    text-align: center;
+    background: linear-gradient(to right, #ff1d37, #7f90ff);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 10px;
+  }
+  h3 {
+    padding: 5px;
+    position: absolute;
+    top: 15%;
+    width: 100%;
+    background: None;
+    overflow: hidden;
+    z-index: 1000;
+  }
+  
+  section {
+    border-bottom: 6px solid;
+    border-image-source: linear-gradient(to right, #00083f, #ff1d37, #00083f);
+    border-image-slice: 1;
+  }
+  
+  select {
+    border-radius: 15px;
+    margin-bottom: 15px;
+  }
+  /* MEILLEUR FILM ################################################################################################### */
+  .best-movie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .best-movie h2::before {
+    content: "";
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-image: url("/app/images/best_movie.png");
+    background-size: cover;
+    color: wheat;
+    margin-right: 1px;
+  }
+  .best-movie__card {
+    padding: 10px ;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 100%;
+    align-items: center;
+    border: 6px solid;
+    border-image: linear-gradient(to bottom, #ff1d37, #00083f) 1;
+  }
+  
+  .best-movie__card img {
+    width: 100%;
+    background: none;
+    order: 1;
+    transition: all 0.3s ease-in-out;
+    aspect-ratio: 1/1;
+    filter: contrast(1.1);
+    padding-bottom: 25px;
+  }
+  .best-movie__details {
+    display: flex;
+    flex-direction: column;
+    order: 2;
+  }
+  .best-movie__card .best-movie__details h2::before {
+    display: none;
+  }
+  .best-movie__details h2 {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .best-movie__details p {
+    width: 100%;
+    margin-bottom: 25px;
+    padding: 10px;
+  }
+  .best-movie__details button {
+    position: inherit;
+    margin: 0 auto;
+  }
+  
+  /* MEILLEURS FILMS ################################################################################################# */
+  .best-movies {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .best-movies h2::before {
+    content: "";
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-image: url("/app/images/best_movies.png");
+    background-size: cover;
+    color: white;
+    margin-right: 1px;
+  }
+  
+  .best-movies__cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .best-movies__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: relative; /* Pour positionner la ligne et le bouton */
+  }
+  .best-movies__card.hidden {
+    display: none;
+  }
+  .best-movies__card img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    filter: contrast(1.1);
+    padding-bottom: 30px;
+    background: none;
+    border: 1px solid;
+    border-image: linear-gradient(to bottom, #ff1d37, #00083f) 1;
+  }
+  
+  .best-movies__card::after {
+    content: "";
+    position: absolute;
+    top: 12%; /* Place la ligne au milieu verticalement */
+    width: 100%;
+    height: 40%; /* Épaisseur de la ligne */
+    background-color: rgba(0, 0, 0, 0.5); /* Couleur semi-transparente pour la ligne */
+
+  }
+  
+  /* CATEGORIES ###################################################################################################### */
+  .category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .category h2::before {
+    content: "";
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-image: url("/app/images/category.png");
+    background-size: cover;
+    color: white;
+    margin-right: 1px;
+  }
+  
+  .category1__cards,
+  .category2__cards,
+  .category3__cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .category__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: relative; /* Pour positionner la ligne et le bouton */
+  }
+  
+  .category__card.hidden {
+    display: none;
+  }
+  .category__card img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    filter: contrast(1.1);
+    padding-bottom: 30px;
+    background: none;
+    border: 1px solid;
+    border-image: linear-gradient(to bottom, #ff1d37, #00083f) 1;
+  }
+  
+  .category__card::after {
+    content: "";
+    position: absolute;
+    top: 12%; /* Place la ligne au milieu verticalement */
+    width: 100%;
+    height: 40%; /* Épaisseur de la ligne */
+    background-color: rgba(0, 0, 0, 0.5); /* Couleur semi-transparente pour la ligne */
+  }
+  
+  /* BOUTON DE DETAILS ########################################################################################## */
+  .btn-details {
+    position: absolute;
+    bottom: 52%;
+    left: 60%;
+    width: 33%;
+    height: 32px;
+    border-radius: 25px;
+    background: linear-gradient(to right, #00083f, #767989);
+    color: white;
+    border: none;
+    border: 1px solid red;
+    box-shadow: 0px 0px 0px 2px rgb(204 45 45 / 50%);
+    z-index: 1000;
+    opacity: 0.7;
+  }
+  .btn-details:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  
+  /* DETAILS DES FILMS ############################################################################################# */
+  .details {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    z-index: 2000;
+  }
+  
+  .details .title-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .details .title-container .close {
+    font-size: 28px;
+  }
+  
+  .details .title-container .close:hover {
+    font-size: 32px;
+    cursor: pointer;
+  }
+  
+  .details h4 {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .details p {
+    margin-bottom: 10px;
+  }
+  
+  .details img {
+    width: 80%;
+    object-fit: contain;
+    border-radius: 10px;
+    aspect-ratio: 1/1;
+    filter: contrast(1.1);
+  }
+  
+  .btn-show-more {
+    width: 33%;
+    height: 32px;
+    border-radius: 25px;
+    margin: 0 auto;
+    background: linear-gradient(to right, #00083f, #767989);
+    color: white;
+    border: 1px solid red;
+    box-shadow: 0px 0px 0px 2px rgb(204 45 45 / 50%);
+    z-index: 1000;
+    opacity: 0.7;
+    margin-bottom: 25px;
+  }

@@ -1,0 +1,128 @@
+/* ################################################################################################################# */
+/* ################################################## LARGE.CSS #################################################### */
+/* ################################################################################################################# */
+    
+/* DESKTOP */
+@media(min-width: 1280px) {
+/* DESKTOP */
+.container {
+    width: 90%;
+}
+.best-movies__card h3:nth-child() {
+    padding-left: 100px;
+}
+    /* MEILLEUR FILM */
+    .best-movie__card {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+    .best-movie__card h2 {
+        padding-left: 10px;
+    }
+    .best-movie__card img {
+        aspect-ratio: inherit;
+        width: 30%
+    }
+    .best-movie__details .details {
+        width: 50%;
+    }
+    /* MEILLEUR FILMS */
+    .best-movies__card {
+        width: 33.33%;
+    }
+    .best-movies__card img {
+        height: 350px;
+    }
+    .best-movies__card.hidden {
+        display: flex;
+    }
+    .best-movies__card::after {
+        width: 95%;
+    }
+    .best-movies__card:nth-child(2) h3,
+    .best-movies__card:nth-child(5) h3 {
+        padding-left: 23px;
+    }
+    .best-movies__card:nth-child(2) {
+        padding-right: 18px;
+    }
+    .best-movies__card:nth-child(2)::after {
+        width: 90.4%;
+    }
+    .best-movies__card:nth-child(3) {
+        padding-left: 18px;
+        padding-right: inherit;
+    }
+    .best-movies__card:nth-child(4) {
+        padding-left: inherit;
+        padding-right: 18px;
+    }
+    .best-movies__card:nth-child(5) {
+        padding-left: 18px;
+    }
+    .best-movies__card:nth-child(5)::after {
+        width: 90.4%;
+    }
+    .best-movies__card:nth-child(1) button, 
+    .best-movies__card:nth-child(5) button {
+        left: 60%
+    }
+    .best-movies__card:nth-child(3) button,
+    .best-movies__card:nth-child(6) button {
+        left: 65%
+    }
+
+    /* CATEGORY */
+
+    .category__card {
+        width: 33.33%;
+    }
+    .category__card img {
+        height: 350px;
+        }
+    .category__card.hidden {
+        display: flex;
+    }
+    .category__card::after {
+        width: 95%;
+        }
+    .category__card:nth-child(2) h3,
+    .category__card:nth-child(5) h3 {
+        padding-left: 23px;
+    }
+    .category__card:nth-child(2) {
+        padding-right: 18px;
+    }
+    .category__card:nth-child(2)::after {
+        width: 90.4%;
+    }
+    .category__card:nth-child(3) {
+        padding-left: 18px;
+        padding-right: inherit;
+    }
+    .category__card:nth-child(4) {
+        padding-left: inherit;
+        padding-right: 18px;
+    }
+    .category__card:nth-child(5) {
+        padding-left: 18px;
+    }
+    .category__card:nth-child(5)::after {
+        width: 90.4%;
+    }
+    .category__card:nth-child(1) button, 
+    .category__card:nth-child(5) button {
+        left: 59%
+    }
+    .category__card:nth-child(3) button,
+    .category__card:nth-child(6) button {
+        left: 64%
+    }
+
+    /* BTN */
+    .btn-show-more {
+        display: none;
+    }
+}
+    
