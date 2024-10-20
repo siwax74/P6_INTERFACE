@@ -1,5 +1,5 @@
 /* ################################################################################################################# */
-/* ################################################## SMALL.CSS #################################################### */
+/* ################################################## PHONE.CSS #################################################### */
 /* ################################################################################################################# */
 
 /* MOBIL-FIRST */
@@ -122,6 +122,7 @@
     width: 100%;
     background: none;
     transition: all 0.3s ease-in-out;
+    aspect-ratio: 1/1;
     filter: contrast(1.1);
     padding-bottom: 25px;
   }
@@ -305,7 +306,16 @@
     border: 1px solid #ddd;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     z-index: 2000;
-    overflow: auto;
+  }
+  .details h2 {
+    display: flex;
+    justify-content: flex-start;
+    padding: inherit;
+    margin: 3px;
+  }
+
+  .details h2::before {
+    display: none;
   }
   
   .details .title-container {
@@ -316,7 +326,7 @@
   }
   
   .details .title-container .close {
-    font-size: 18px;
+    font-size: 32px;
   }
   
   .details .title-container .close:hover {
@@ -347,6 +357,9 @@
     margin-bottom: 15px;
     padding: 0;
   }
+  .details p:nth-of-type(2) {
+    margin: 3px;
+  }
   .details .director {
     display: flex;  
     flex-direction: column;
@@ -365,6 +378,7 @@
   }
   .details img {
     width: 100%;
+    margin: 3px;
   }
   
   .btn-show-more {

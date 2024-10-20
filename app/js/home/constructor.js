@@ -188,9 +188,6 @@ export function createBestMoviesCategory3(allCategories, datasCategory3Filter) {
   return listMoviesCategory3;
 }
 
-
-
-
 // FONCTIONNALITÉES MAJ MEILLEUR FILMS CATEGORIE 3 ################################################################# //
 export function updateCategory3(datasCategory3Filter) {
   const listMoviesCategory3 = document.querySelector(".category3__cards");
@@ -250,8 +247,6 @@ export function updateCategory3(datasCategory3Filter) {
   return listMoviesCategory3;
 }
 
-
-
 // FONCTIONNALITÉES CREATION BOX DE DETAILS DES LIVRES ############################################################# //
 export function createElementDetails(element, movieDetails) {
   // Sélectionner et supprimer tous les éléments existants ayant la classe "details" dans le document
@@ -277,7 +272,7 @@ export function createElementDetails(element, movieDetails) {
     detailsElement.style.display = "none"; // Cache la section des détails
   });
 
-  // Créer l'élément du titre (h4) et y insérer le titre du film
+  // Créer l'élément du titre (h2) et y insérer le titre du film
   const titleElement = document.createElement("h2");
   titleElement.innerText = `${movieDetails.title}`; // Utilise le titre du film depuis "movieDetails"
 
