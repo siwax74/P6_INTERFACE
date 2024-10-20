@@ -2,12 +2,10 @@
 /* ################################################## MEDIUM.CSS #################################################### */
 /* ################################################################################################################# */
     
-/* DESKTOP - 4K++ */
+/* DESKTOP + */
 @media(min-width: 1440px) {
 /* DESKTOP */
-.container {
-    width: 90%;
-}
+
     /* HEADER */
     header {
         height: 100px;
@@ -15,8 +13,43 @@
     header a {
         height: 100px;
     }
-
-    .best-movies__card:nth-child(2)::after {
-        width: 50%; /* Appliquer à la deuxième carte */
+    .best-movies__card img {
+        height: 400px;
     }
-}     
+    .category__card img {
+        height: 400px;
+    }
+}
+
+/* DESKTOP + 4K++ */
+@media (min-width: 1920px) {
+    .container {
+        max-width: 1440px;
+    }
+    .best-movies__card::after {
+        width: 96.5%;
+    }
+    .best-movies__card:nth-child(2)::after {
+        width: 93.1%;
+    }
+    .best-movies__card:nth-child(5)::after {
+        width: 93.1%;
+    }
+    .best-movies__card img {
+        height: 570px;
+    }
+
+    .category__card::after {
+        width: 96.5%;
+    }
+    .category__card:nth-child(2)::after {
+        width: 93.1%;
+        }
+    .category__card:nth-child(5)::after {
+        width: 93.1%;
+    }
+    .category__card img {
+        height: 570px;
+    }
+
+  }

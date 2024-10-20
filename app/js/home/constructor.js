@@ -45,7 +45,7 @@ function createBestMovieElement(BestMovieDetailsFetch) {
 
   const buttonElement = document.createElement("button");
   buttonElement.classList.add("btn-details");
-  buttonElement.textContent = "détails";
+  buttonElement.textContent = "Détails";
   rawColumnBestMovieCard.appendChild(buttonElement);
   return rawColumnBestMovieCard;
 }
@@ -167,6 +167,7 @@ export function createBestMoviesCategory3(allCategories, datasCategory3Filter) {
 
   // Ajouter un message par défaut au menu déroulant (sélectionnez une catégorie)
   const defaultOption = document.createElement("option");
+  defaultOption.innerText = "test";
   defaultOption.value = ""; // Valeur vide pour l'option par défaut
   defaultOption.textContent = "Sélectionnez une catégorie"; // Message à afficher
   defaultOption.disabled = true; // Empêche la sélection de cette option
@@ -186,6 +187,10 @@ export function createBestMoviesCategory3(allCategories, datasCategory3Filter) {
   });
   return listMoviesCategory3;
 }
+
+
+
+
 // FONCTIONNALITÉES MAJ MEILLEUR FILMS CATEGORIE 3 ################################################################# //
 export function updateCategory3(datasCategory3Filter) {
   const listMoviesCategory3 = document.querySelector(".category3__cards");
@@ -245,6 +250,8 @@ export function updateCategory3(datasCategory3Filter) {
   return listMoviesCategory3;
 }
 
+
+
 // FONCTIONNALITÉES CREATION BOX DE DETAILS DES LIVRES ############################################################# //
 export function createElementDetails(element, movieDetails) {
   // Sélectionner et supprimer tous les éléments existants ayant la classe "details" dans le document
@@ -252,7 +259,6 @@ export function createElementDetails(element, movieDetails) {
   allDetailsElements.forEach((details) => {
     details.parentNode.removeChild(details); // Supprime chaque élément "details" trouvé
   });
-
   // Créer un nouvel élément div qui contiendra les détails du film
   const detailsElement = document.createElement("div");
   detailsElement.className = "details"; // Attribuer la classe "details" à ce nouvel élément
@@ -272,57 +278,66 @@ export function createElementDetails(element, movieDetails) {
   });
 
   // Créer l'élément du titre (h4) et y insérer le titre du film
-  const titleElement = document.createElement("h4");
-  titleElement.innerText = `Titre: ${movieDetails.title}`; // Utilise le titre du film depuis "movieDetails"
+  const titleElement = document.createElement("h2");
+  titleElement.innerText = `${movieDetails.title}`; // Utilise le titre du film depuis "movieDetails"
 
   // Ajouter le titre et la croix au conteneur du titre
   titleContainer.appendChild(titleElement);
   titleContainer.appendChild(closeButton);
 
   // Créer et ajouter les éléments de texte pour chaque propriété du film (année, genre, etc.)
-  const yearElement = document.createElement("p");
-  yearElement.innerText = `Année de sortie: ${movieDetails.year}`; // Année de sortie du film
+  const yearGenreElement = document.createElement("span");
+  yearGenreElement.innerText = `${movieDetails.year} - ${movieDetails.genres.join(", ")}`; // Année de sortie du film
 
-  const genresElement = document.createElement("p");
-  genresElement.innerText = `Genres: ${movieDetails.genres.join(", ")}`; // Liste des genres du film
+  const classificationDurationCountryElement = document.createElement("span");
+  // Vérifie si movieDetails.rated est défini et contient "Not rated" ou s'il est vide/indéfini
+  if (!movieDetails.rated || movieDetails.rated.toLowerCase().includes("not rated")) {
+    movieDetails.rated = "Non classifié"; // Si "Not rated" ou non défini, on remplace par "Non classifié"
+  }
+  classificationDurationCountryElement.innerText = `PG-${movieDetails.rated} - ${movieDetails.duration} minutes (${movieDetails.countries.join("/")})`;
 
-  const directorsElement = document.createElement("p");
-  directorsElement.innerText = `Réalisateur: ${movieDetails.directors.join(", ")}`; // Réalisateurs du film
+  const imdbScoreElement = document.createElement("span");
+  imdbScoreElement.innerText = `IMDB score: ${movieDetails.imdb_score}/10`; // Score IMDB du film
 
-  const actorsElement = document.createElement("p");
-  actorsElement.innerText = `Acteurs: ${movieDetails.actors.join(", ")}`; // Acteurs du film
-
-  const durationElement = document.createElement("p");
-  durationElement.innerText = `Durée: ${movieDetails.duration} minutes`; // Durée du film en minutes
-
-  const countriesElement = document.createElement("p");
-  countriesElement.innerText = `Pays d'origine: ${movieDetails.countries.join(", ")}`; // Pays d'origine du film
-
-  const budgetElement = document.createElement("p");
+  const budgetElement = document.createElement("span");
   budgetElement.innerText = `Budget: ${movieDetails.budget} ${movieDetails.budget_currency}`; // Budget du film avec la devise
 
-  const imdbScoreElement = document.createElement("p");
-  imdbScoreElement.innerText = `Score IMDB: ${movieDetails.imdb_score}`; // Score IMDB du film
+  const directorElement = document.createElement("p");
+  directorElement.className = "director";
+  const directorElementTitle = document.createElement("span");
+  directorElementTitle.innerText = `Réalisé par: `;
+  const director = document.createElement("span");
+  director.innerText = `${movieDetails.directors.join(", ")}`; // Nom du réalisateur
+
+  directorElement.appendChild(directorElementTitle);
+  directorElement.appendChild(director);
 
   const descriptionElement = document.createElement("p");
-  descriptionElement.innerText = `Description: ${movieDetails.description}`; // Description du film
+  descriptionElement.innerText = `${movieDetails.description}`; // Description du film
 
-  // Créer un élément img pour afficher l'image du film
   const imageUrlElement = document.createElement("img");
   imageUrlElement.src = movieDetails.image_url; // URL de l'image du film
 
+  const actorsElement = document.createElement("p");
+  actorsElement.className = "actors";
+  const actorsElementTitle = document.createElement("span");
+  actorsElementTitle.innerText = `Avec: `;
+  const actors = document.createElement("span");
+  actors.innerText = `${movieDetails.actors.join(", ")}`; // Acteurs du film
+  actorsElement.appendChild(actorsElementTitle);
+  actorsElement.appendChild(actors);
+  
+
   // Ajouter tous les éléments de détail créés (conteneur du titre, année, genre, etc.) dans l'élément principal des détails
   detailsElement.appendChild(titleContainer); // Ajout du conteneur de titre et du bouton de fermeture
-  detailsElement.appendChild(yearElement);
-  detailsElement.appendChild(genresElement);
-  detailsElement.appendChild(directorsElement);
-  detailsElement.appendChild(actorsElement);
-  detailsElement.appendChild(durationElement);
-  detailsElement.appendChild(countriesElement);
-  detailsElement.appendChild(budgetElement);
+  detailsElement.appendChild(yearGenreElement);
+  detailsElement.appendChild(classificationDurationCountryElement);
   detailsElement.appendChild(imdbScoreElement);
+  detailsElement.appendChild(budgetElement);
+  detailsElement.appendChild(directorElement);
   detailsElement.appendChild(descriptionElement);
   detailsElement.appendChild(imageUrlElement);
+  detailsElement.appendChild(actorsElement);
 
   // Enfin, ajouter cet élément de détails (avec toutes les infos du film) à l'élément parent fourni en paramètre
   element.appendChild(detailsElement);

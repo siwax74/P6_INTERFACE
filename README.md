@@ -3,27 +3,26 @@
 
 ## 📋 **Fonctionnalités**
 
-- **Sort le meilleur film** :
-  - Ajout manuel des joueurs (Nom, Prénom, Date de naissance, ID National d'Échecs).
-  - Voir la liste de joueurs.
+- **Meilleur film** :
+  - Affiche le meilleur film eselon le `imdb_score` et le nombre de votes;
 
 - **Meilleurs films** :
-  - Sort 6 meilleurs films selon le `imdb_score`.
+  - Sort 6 meilleurs films selon le `imdb_score` et le nombre de votes;
 
 - **Catégories** :
-  - Affiche la catégorie "Histoire".
-  - Affiche la catégorie "Action".
-  - Affiche la catégorie choisie parmi 25 proposées.
+  - Affiche la catégorie "Histoire";
+  - Affiche la catégorie "Action";
+  - Affiche la catégorie choisie parmi 25 proposées;
 
 ## 🛠 **Prérequis**
 
 Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
 
-- Un **navigateur web** moderne (Chrome, Firefox, etc.) pour tester l'application.
-- Un éditeur de code (comme [Visual Studio Code](https://code.visualstudio.com/), [Atom](https://atom.io/), ou [Sublime Text](https://www.sublimetext.com/)) pour modifier le code.
-- Avoir une connexion Internet pour accéder à l'API.
+- Un **navigateur web** moderne (Chrome, Firefox, etc.) pour tester l'application;
+- Un éditeur de code (comme [Visual Studio Code](https://code.visualstudio.com/), [Atom](https://atom.io/), ou [Sublime Text](https://www.sublimetext.com/)) pour modifier le code;
+- Avoir une connexion Internet pour accéder à l'API;
 - Vous devez utiliser l'API disponible à cette adresse :
-  - **API** : [OCMovies-API-EN-FR](https://github.com/OpenClassrooms-Student-Center/OCMovies-API-EN-FR.git)
+  - **API** : [OCMovies-API-EN-FR](https://github.com/OpenClassrooms-Student-Center/OCMovies-API-EN-FR.git);
 
 ## 📂 **Installation**
 
@@ -56,17 +55,19 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
   python manage.py runserver
   ```
 2. Ouvrez le dossier templates :
-- Cliquer-droit sur le fichier [home.html](/app/templates/home.html)
-- Ouvrir le fichier avec votre serveur de développement local. (Exemple : Live Server)
+- Cliquer-droit sur le fichier [home.html](/app/templates/home.html);
+- Ouvrir le fichier avec votre serveur de développement local. (Exemple : Live Server);
 
 ## 🛠 **Maintenance et Améliorations Futures**
 
 Voici quelques améliorations prévues pour les versions futures :
-- Création d'une barre de recherche
+- Création d'une barre de recherche;
+- Ajout de bandes annonces;
+- Ajout de publicités;
 
 ## 📄 **Licences**
 
-Ce projet est sous licence MIT. Consultez le fichier [LICENSE](./LICENSE) pour plus d'informations.
+Ce projet est sous licence MIT. Consultez le fichier [LICENSE](./LICENSE) pour plus d'informations;
 
 ## 👨‍💻 **Auteur**
 

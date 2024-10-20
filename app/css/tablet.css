@@ -4,18 +4,28 @@
     
 /* TABLET */
 @media(min-width: 768px) {
-.container {
-    width: 65%;
-}
+    .container {
+        width: 75%;
+        margin: 0 auto;
+      }
 h2 {
     display: flex;
     justify-content: flex-start;
     padding-left: inherit;
+    width: 59%;
 }
+
 h3 {
     padding-left: 15px;
     padding-right: 15px;
 }
+
+.best-movie h2::before,
+.best-movies h2::before,
+.category h2::before {
+    margin-right: 5px;
+}
+
     /* HEADER */
     header h1{
         display: flex;
@@ -25,25 +35,25 @@ h3 {
         
     }
     /* MEILLEUR FILM */
+    .best-movie {
+        align-items: inherit;
+    }
     .best-movie__card {
         display: flex;
         flex-direction: row;
     }
-    .best-movie__card img {
-        aspect-ratio: inherit;
-    }
     .best-movie__details h2 {
         padding-left: 10px;
     }
-    .best-movie__details .details {
-        width: 50%;
-    }
     /* MEILLEUR FILMS */
+    .best-movies {
+        align-items: inherit;
+    }
     .best-movies__card {
         width: 50%;
     }
     .best-movies__card::after {
-        width: 93%;
+        width: 93.5%;
     }
     .best-movies__card:nth-child(1),
     .best-movies__card:nth-child(3) {
@@ -64,16 +74,18 @@ h3 {
     .best-movies__card:nth-child(1) button,
     .best-movies__card:nth-child(3) button,
     .best-movies__card:nth-child(5) button {
-
         left: 53%;
     }
 
     /* CATEGORY */
+    .category {
+        align-items: inherit;
+    }
     .category__card {
         width: 50%;
     }
     .category__card::after {
-        width: 93%;
+        width: 93.5%;
     }
     .category__card:nth-child(1),
     .category__card:nth-child(3) {
@@ -96,4 +108,13 @@ h3 {
     .category__card:nth-child(5) button {
         left: 53%;
     }
+    .category-span {
+        display: inline;
+    }
+        .category-span select {
+            width: 30%;
+            margin: 0px 5px 15px;
+            border-radius: 15px;
+          }
 }
+

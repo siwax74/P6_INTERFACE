@@ -39,6 +39,7 @@
   header a {
     background: None;
     display: flex;
+    height: 120px;
     justify-content: center;
   }
   header img {
@@ -88,10 +89,6 @@
     border-image-slice: 1;
   }
   
-  select {
-    border-radius: 15px;
-    margin-bottom: 15px;
-  }
   /* MEILLEUR FILM ################################################################################################### */
   .best-movie {
     display: flex;
@@ -124,9 +121,7 @@
   .best-movie__card img {
     width: 100%;
     background: none;
-    order: 1;
     transition: all 0.3s ease-in-out;
-    aspect-ratio: 1/1;
     filter: contrast(1.1);
     padding-bottom: 25px;
   }
@@ -134,6 +129,10 @@
     display: flex;
     flex-direction: column;
     order: 2;
+  }
+  .best-movie__details .details {
+    width: 70%;
+    left: 15%;
   }
   .best-movie__card .best-movie__details h2::before {
     display: none;
@@ -195,7 +194,7 @@
     width: 100%;
     aspect-ratio: 1/1;
     filter: contrast(1.1);
-    padding-bottom: 30px;
+    margin-bottom: 30px;
     background: none;
     border: 1px solid;
     border-image: linear-gradient(to bottom, #ff1d37, #00083f) 1;
@@ -205,7 +204,7 @@
     content: "";
     position: absolute;
     top: 12%; /* Place la ligne au milieu verticalement */
-    width: 100%;
+    width: 99.8%;
     height: 40%; /* Épaisseur de la ligne */
     background-color: rgba(0, 0, 0, 0.5); /* Couleur semi-transparente pour la ligne */
 
@@ -256,7 +255,7 @@
     width: 100%;
     aspect-ratio: 1/1;
     filter: contrast(1.1);
-    padding-bottom: 30px;
+    margin-bottom: 30px;
     background: none;
     border: 1px solid;
     border-image: linear-gradient(to bottom, #ff1d37, #00083f) 1;
@@ -266,11 +265,13 @@
     content: "";
     position: absolute;
     top: 12%; /* Place la ligne au milieu verticalement */
-    width: 100%;
+    width: 99.8%;
     height: 40%; /* Épaisseur de la ligne */
     background-color: rgba(0, 0, 0, 0.5); /* Couleur semi-transparente pour la ligne */
   }
-  
+  .category-span {
+    display: none;
+  }
   /* BOUTON DE DETAILS ########################################################################################## */
   .btn-details {
     position: absolute;
@@ -290,19 +291,21 @@
   .btn-details:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
   }
-  
-  
+    
   /* DETAILS DES FILMS ############################################################################################# */
   .details {
     display: flex;
     flex-direction: column;
     position: absolute;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     width: 100%;
+    top: 10%;
+    padding: 25px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     z-index: 2000;
+    overflow: auto;
   }
   
   .details .title-container {
@@ -313,29 +316,55 @@
   }
   
   .details .title-container .close {
-    font-size: 28px;
+    font-size: 18px;
   }
   
   .details .title-container .close:hover {
-    font-size: 32px;
     cursor: pointer;
   }
-  
-  .details h4 {
+  .details span {
+    margin: 3px;
+  }
+  .details span:nth-of-type(1),
+  .details span:nth-of-type(2),
+  .details span:nth-of-type(3),
+  .details span:nth-of-type(4) {
     font-weight: bold;
-    margin-bottom: 10px;
+    font-size: 18px;
   }
-  
+  .details .director span:nth-of-type(1) {
+    font-weight: 550;
+  }
+  .details .director span:nth-of-type(2) {
+    font-weight: inherit;
+  }
+  .details .actors span:nth-of-type(2) {
+    font-weight: inherit;
+
+  }
   .details p {
-    margin-bottom: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 0;
   }
-  
+  .details .director {
+    display: flex;  
+    flex-direction: column;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .details .actors span {
+    width: 100%;
+  }
+  .details .actors {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    margin-bottom: inherit;
+  }
   .details img {
-    width: 80%;
-    object-fit: contain;
-    border-radius: 10px;
-    aspect-ratio: 1/1;
-    filter: contrast(1.1);
+    width: 100%;
   }
   
   .btn-show-more {

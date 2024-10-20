@@ -6,8 +6,9 @@
 @media(min-width: 1024px) {
     /* DESKTOP */
     .container {
-        width: 90%;
-    }
+        width: 80%;
+        margin: 0 auto;
+      }
     .best-movies__card h3:nth-child() {
         padding-left: 100px;
     }
@@ -32,13 +33,14 @@
             width: 33.33%;
         }
         .best-movies__card img {
-            height: 350px;
+            height: 250px;
         }
+
         .best-movies__card.hidden {
             display: flex;
         }
         .best-movies__card::after {
-            width: 95%;
+            width: 93%;
         }
         .best-movies__card:nth-child(2) h3,
         .best-movies__card:nth-child(5) h3 {
@@ -46,9 +48,6 @@
         }
         .best-movies__card:nth-child(2) {
             padding-right: 18px;
-        }
-        .best-movies__card:nth-child(2)::after {
-            width: 90.4%;
         }
         .best-movies__card:nth-child(3) {
             padding-left: 18px;
@@ -61,8 +60,9 @@
         .best-movies__card:nth-child(5) {
             padding-left: 18px;
         }
+        .best-movies__card:nth-child(2)::after,
         .best-movies__card:nth-child(5)::after {
-            width: 90.4%;
+            width: 86.6%;
         }
         .best-movies__card:nth-child(1) button, 
         .best-movies__card:nth-child(5) button {
@@ -79,7 +79,7 @@
             width: 33.33%;
         }
         .category__card img {
-            height: 350px;
+            height: 250px;
             }
         .category__card.hidden {
             display: flex;
@@ -94,9 +94,6 @@
         .category__card:nth-child(2) {
             padding-right: 18px;
         }
-        .category__card:nth-child(2)::after {
-            width: 90.4%;
-        }
         .category__card:nth-child(3) {
             padding-left: 18px;
             padding-right: inherit;
@@ -108,8 +105,9 @@
         .category__card:nth-child(5) {
             padding-left: 18px;
         }
+        .category__card:nth-child(2)::after,
         .category__card:nth-child(5)::after {
-            width: 90.4%;
+            width: 86.6%;
         }
         .category__card:nth-child(1) button, 
         .category__card:nth-child(5) button {

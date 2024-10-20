@@ -4,7 +4,7 @@
 
 // IMPORT DES MODULES ############################################################################################## //
 import { FetchBestMovies, fetchMovieDetails, FetchBestMoviesCategory, FetchAllCategories } from "./fetch.js";
-import { sortBestMovies, sortBestMovie, sortMoviesCategory } from "./utils.js";
+import { sortBestMovies, sortBestMovie, sortMoviesCategory } from "../utils/utils.js";
 import { constructorElements } from "./constructor.js";
 import { listenEvents } from "./events.js";
 
@@ -24,7 +24,8 @@ async function init() {
 
     // Sort les films les mieux noté
     const bestMovies = sortBestMovies(bestMoviesFetch);
-
+    console.log(bestMovies)
+    
     // Récupère la Catégorie 1 et ces films
     const category1Name = "History";
     const datasCategory1 = await FetchBestMoviesCategory(protocol, domain, urlApi, category1Name);

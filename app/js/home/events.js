@@ -5,7 +5,7 @@
 // IMPORT DES MODULES ############################################################################################## //
 import { FetchBestMovies, FetchBestMoviesCategory, fetchMovieDetails, fetchMovieByName } from "./fetch.js";
 import { updateCategory3, createElementDetails } from "./constructor.js";
-import { sortBestMovie, sortMoviesCategory, sortMovieFetchByName } from "./utils.js";
+import { sortBestMovie, sortMoviesCategory, sortMovieFetchByName } from "../utils/utils.js";
 
 // ECOUTEURS D'EVENEMENTS DU DOM ################################################################################### //
 export function listenEvents(elements, protocol, domain, urlApi) {
