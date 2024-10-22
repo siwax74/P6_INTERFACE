@@ -107,14 +107,6 @@ h3 {
     .category__card:nth-child(5) button {
         left: 53%;
     }
-    .category-span {
-        display: inline;
-    }
-        .category-span select {
-            width: 30%;
-            margin: 0px 5px 15px;
-            border-radius: 15px;
-          }
 
     /* DETAILS */
     .details h2 {

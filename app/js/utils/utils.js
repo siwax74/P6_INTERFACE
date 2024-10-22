@@ -49,3 +49,39 @@ export function sortMovieFetchByName(movieFetch) {
   }
   return []; // Retourne un tableau vide si movie n'est pas valide
 }
+
+// UTILITAIRE : CRÉER UN ÉLÉMENT HTML GÉNÉRIQUE ################################################################### //
+export function createElement(tag, attributes = {}, textContent = "") {
+  const element = document.createElement(tag);
+  Object.keys(attributes).forEach(key => element.setAttribute(key, attributes[key]));
+  if (textContent) element.textContent = textContent;
+  return element;
+}
+
+export function createCardsElements(movies, className) {
+  const fragment = document.createDocumentFragment();
+
+  movies.forEach((movie, index) => {
+    const card = createElement('div', { class: className });
+
+    if (index > 1) {
+      card.classList.add("hidden");
+    }
+
+    // Crée le titre "h3"
+    const titleElement = createElement('h3', {}, movie.title);
+    card.appendChild(titleElement);
+
+    // Crée l'image
+    const imageElement = createElement('img', { src: movie.image_url });
+    card.appendChild(imageElement);
+
+    // Crée le bouton "Détails"
+    const buttonElement = createElement('button', { class: 'btn-details' }, 'Détails');
+    card.appendChild(buttonElement);
+
+    fragment.appendChild(card);
+  });
+
+  return fragment;
+}

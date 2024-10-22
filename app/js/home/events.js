@@ -4,7 +4,7 @@
 
 // IMPORT DES MODULES ############################################################################################## //
 import { FetchBestMovies, FetchBestMoviesCategory, fetchMovieDetails, fetchMovieByName } from "./fetch.js";
-import { updateCategory3, createElementDetails } from "./constructor.js";
+import { updateThirdCategory, displayMovieDetails } from "./constructor.js";
 import { sortBestMovie, sortMoviesCategory, sortMovieFetchByName } from "../utils/utils.js";
 
 // ECOUTEURS D'EVENEMENTS DU DOM ################################################################################### //
@@ -33,7 +33,7 @@ export function listenEvents(elements, protocol, domain, urlApi) {
       console.log(movie);
       const movieDetails = await fetchMovieDetails(protocol, domain, urlApi, movie);
       console.log(movieDetails);
-      createElementDetails(bestMovieElement, movieDetails);
+      displayMovieDetails(bestMovieElement, movieDetails);
     });
   }
 
@@ -61,7 +61,7 @@ export function listenEvents(elements, protocol, domain, urlApi) {
         // Récupère les détails du film
         const movieDetails = await fetchMovieDetails(protocol, domain, urlApi, movie);
 
-        createElementDetails(detailsItem, movieDetails);
+        displayMovieDetails(detailsItem, movieDetails);
       });
     });
     // Sélectionner le bouton "Voir plus" par son ID
@@ -110,7 +110,7 @@ export function listenEvents(elements, protocol, domain, urlApi) {
         const movieDetails = await fetchMovieDetails(protocol, domain, urlApi, movie);
         console.log("Clic sur le bouton du troisième élément");
 
-        createElementDetails(detailsItem, movieDetails);
+        displayMovieDetails(detailsItem, movieDetails);
       });
     });
     // Sélectionner le bouton "Voir plus" par son ID
@@ -159,7 +159,7 @@ export function listenEvents(elements, protocol, domain, urlApi) {
         const movieDetails = await fetchMovieDetails(protocol, domain, urlApi, movie);
         console.log("Clic sur le bouton du troisième élément");
 
-        createElementDetails(detailsItem, movieDetails);
+        displayMovieDetails(detailsItem, movieDetails);
       });
     });
     // Sélectionner le bouton "Voir plus" par son ID
@@ -209,7 +209,7 @@ export function listenEvents(elements, protocol, domain, urlApi) {
         const movieDetails = await fetchMovieDetails(protocol, domain, urlApi, movie);
         console.log("Clic sur le bouton du troisième élément");
 
-        createElementDetails(detailsItem, movieDetails);
+        displayMovieDetails(detailsItem, movieDetails);
       });
     });
     // Sélectionner le bouton "Voir plus" par son ID
@@ -243,7 +243,7 @@ export function listenEvents(elements, protocol, domain, urlApi) {
       const datasCategory3 = await FetchBestMoviesCategory(protocol, domain, urlApi, selectedCategory);
       const datasCategory3Filter = sortMoviesCategory(datasCategory3, selectedCategory);
       // Créer et afficher les films de la nouvelle catégorie
-      updateCategory3(datasCategory3Filter);
+      updateThirdCategory(datasCategory3Filter);
       eventsListenerCategory3(category3Elements);
     });
   }

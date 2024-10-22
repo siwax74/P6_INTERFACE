@@ -5,7 +5,7 @@
 // IMPORT DES MODULES ############################################################################################## //
 import { FetchBestMovies, fetchMovieDetails, FetchBestMoviesCategory, FetchAllCategories } from "./fetch.js";
 import { sortBestMovies, sortBestMovie, sortMoviesCategory } from "../utils/utils.js";
-import { constructorElements } from "./constructor.js";
+import { displayElements } from "./constructor.js";
 import { listenEvents } from "./events.js";
 
 // FONCTIONS PRINCIPALES ########################################################################################### //
@@ -44,8 +44,8 @@ async function init() {
     // Récupère toutes les catégories
     const allCategories = await FetchAllCategories(protocol, domain, urlApi);
 
-    // Construit les éléments du DOM
-    const elements = constructorElements(
+    // Construit/affiche les éléments du DOM
+    const elements = displayElements(
       BestMovieDetailsFetch,
       bestMovies,
       datasCategory1Filter,

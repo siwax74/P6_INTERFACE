@@ -271,9 +271,14 @@
     background-color: rgba(0, 0, 0, 0.5); /* Couleur semi-transparente pour la ligne */
   }
   .category-span {
-    display: none;
-  }
-  /* BOUTON DE DETAILS ########################################################################################## */
+    display: inline;
+}
+  .category-span select {
+    width: 40%;
+    margin: 0px 5px 15px;
+    border-radius: 15px;
+}
+  /* BOUTON DE DETAILS ############################################################################################### */
   .btn-details {
     position: absolute;
     bottom: 52%;
@@ -294,8 +299,8 @@
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
     cursor: pointer;
   }
-    
-  /* DETAILS DES FILMS ############################################################################################# */
+  
+  /* DETAILS D'UN FILM LORS D'UN CLIQUE SUR "Détails" ############################################################## */
   .details {
     display: flex;
     flex-direction: column;
@@ -380,7 +385,7 @@
     width: 100%;
     margin: 3px;
   }
-  
+  /* BOUTON "VOIR PLUS" ############################################################################################ */
   .btn-show-more {
     width: 33%;
     height: 32px;
