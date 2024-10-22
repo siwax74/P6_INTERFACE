@@ -62,6 +62,7 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
 
 Voici quelques améliorations prévues pour les versions futures :
 - Création d'une barre de recherche;
+- Utilisation de TailwinCSS
 - Ajout de bandes annonces;
 - Ajout de publicités;
 
