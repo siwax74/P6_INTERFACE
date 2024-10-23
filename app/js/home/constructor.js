@@ -2,205 +2,195 @@
 // ################################################## CONSTRUCTOR.JS ############################################### //
 // ################################################################################################################# //
 
-import { createElement, createCardsElements } from '../utils/utils.js';
+// CE FICHIER CONTIENT LES FONCTIONS RESPONSABLES DE LA CRÉATION D'ÉLÉMENTS DU DOM :
+// FONCTION PRINCIPALE :
+// - CRÉE LES ÉLÉMENTS NÉCESSAIRES POUR AFFICHER LES FILMS, LES CATÉGORIES ET LES DÉTAILS DU FILM.
+// FONCTIONS :
+// - CRÉE L'ÉLÉMENT REPRÉSENTANT LE MEILLEUR FILM AVEC SON IMAGE, TITRE, DESCRIPTION ET BOUTON "DÉTAILS".
+// - CRÉE DES CARTES POUR LA LISTE DES MEILLEURS FILMS.
+// - CRÉE DES CARTES POUR LES FILMS FILTRÉS PAR CATÉGORIE AVEC UN TITRE.
+// - CRÉE DES CARTES POUR LA CATÉGORIE 3 ET UN MENU DÉROULANT POUR SÉLECTIONNER LES CATÉGORIES.
+// - CRÉE UN ÉLÉMENT AFFICHANT LES DÉTAILS D'UN FILM LORSQUE L'UTILISATEUR CLIQUE SUR LE BOUTON "DÉTAILS".
 
-// APPELS DES FONCTIONNALITÉES ##################################################################################### //
-export function displayElements(
-  BestMovieDetailsFetch,
-  bestMovies,
-  datasCategory1Filter,
-  datasCategory2Filter,
-  allCategories,
-  datasCategory3Filter,
-) {
-  const bestMovieElement = displayBestMovie(BestMovieDetailsFetch);
-  const bestMoviesListElements = displayBestMoviesList(bestMovies);
-  const category1Elements = displayMoviesByCategory(datasCategory1Filter, ".category1__cards");
-  const category2Elements = displayMoviesByCategory(datasCategory2Filter, ".category2__cards");
-  const category3Elements = displayThirdCategoryMovies(allCategories, datasCategory3Filter);
+// IMPORT DES MODULES ############################################################################################## //
+import { createElement, createCardElements } from "../utils/utils.js";
 
-  
-  // Retourne les éléments pour les écoutes.
-  const elements = [];
-  elements.push(bestMovieElement);
-  elements.push(bestMoviesListElements);
-  elements.push(category1Elements);
-  elements.push(category2Elements);
-  elements.push(category3Elements);
-  return elements;
-}
+// ################################################################################################################# //
+// ############################################# FONCTION PRINCIPALE ############################################### //
+// ################################################################################################################# //
 
-function displayBestMovie(BestMovieDetailsFetch) {
-  context = []
-  const rawBestMovieCard = document.querySelector(".best-movie__card");
-  const rawColumnBestMovieCard = document.querySelector(".best-movie__details");
+// APPELS DES FONCTIONS ############################################################################################ //
+export function createElements(
+    BestMovieDetailsFetch,
+    bestMovies,
+    datasCategory1Filter,
+    datasCategory2Filter,
+    allCategories,
+    datasCategory3Filter,
+  ) {
+    const bestMovieElementCreated = createBestMovieCard(BestMovieDetailsFetch);
+    const bestMoviesListElementsCreated = createBestMoviesCards(bestMovies);
+    const category1ListElementsCreated = createBestMoviesCardsByCategory(datasCategory1Filter);
+    const category2ListElementsCreated = createBestMoviesCardsByCategory(datasCategory2Filter);
+    const category3ListElementsCreated = createThirdBestMoviesCardsCategory(allCategories, datasCategory3Filter);
 
-  // Crée l'image
-  const imageElement = createElement('img', { src: BestMovieDetailsFetch.image_url });
-  context.push(imageElement)
-  rawBestMovieCard.appendChild(imageElement);
-
-  // Crée le titre
-  const titleElement = createElement('h2', {}, BestMovieDetailsFetch.title);
-  rawColumnBestMovieCard.appendChild(titleElement);
-
-  // Crée la description
-  const descriptionElement = createElement('p', {}, BestMovieDetailsFetch.description);
-  rawColumnBestMovieCard.appendChild(descriptionElement);
-
-  // Crée le bouton "Détails"
-  const buttonElement = createElement('button', { class: 'btn-details' }, 'Détails');
-  rawColumnBestMovieCard.appendChild(buttonElement);
-
-  return rawColumnBestMovieCard;
-}
-
-// FONCTIONNALITÉS MEILLEUR FILMS ################################################################################# //
-function displayBestMoviesList(bestMovies) {
-  const bestMoviesCards = document.querySelector(".best-movies__cards");
-  const bestMoviesCardElements = createCardsElements(bestMovies, "best-movies__card");
-  bestMoviesCards.appendChild(bestMoviesCardElements);
-  return bestMoviesCards;
-}
-
-// FONCTIONNALITÉE MEILLEURS FILMS PAR CATEGORIE ###################################################################### //
-function displayMoviesByCategory(datasCategoryFilter, selector) {
-  const listMoviesCategory = document.querySelector(selector);
-  const categoryTitle = document.querySelector(`${selector}__title`);
-  categoryTitle.textContent = datasCategoryFilter.categoryName;
-  const categoryCardElements = createCardsElements(datasCategoryFilter.movies, "category__card");
-  listMoviesCategory.appendChild(categoryCardElements);
-  return listMoviesCategory;
-}
-
-// FONCTIONNALITÉE MEILLEUR FILMS CATEGORIE 3 ###################################################################### //
-export function displayThirdCategoryMovies(allCategories, datasCategory3Filter) {
-  // Utilisation de la fonction générique pour créer la catégorie 3
-  const listMoviesCategory3 = displayMoviesByCategory(datasCategory3Filter, '.category3__cards'); // Appelle la fonction pour créer les cartes de films
-  const categorySelect = document.getElementById("category-select");
-
-  // Ajouter un message par défaut au menu déroulant (sélectionnez une catégorie)
-  const defaultOption = createElement('option', { value: "", disabled: true }, "Sélectionnez une catégorie");
-  categorySelect.appendChild(defaultOption);
-
-  // Ajouter les options de catégories dynamiquement
-  allCategories.forEach((category) => {
-    const option = createElement('option', { value: category.name }, category.name);
-
-    // Sélectionner automatiquement la catégorie actuelle
-    if (category.name === datasCategory3Filter.categoryName) {
-      option.selected = true; // Sélectionner si les noms correspondent
-    }
-    categorySelect.appendChild(option);
-  });
-
-  return listMoviesCategory3; // Retourne la liste des films de la catégorie 3
-}
-
-// FONCTIONNALITÉS MAJ MEILLEUR FILMS CATEGORIE 3 ################################################################# //
-export function updateThirdCategory(datasCategory3Filter) {
-  const listMoviesCategory3 = document.querySelector(".category3__cards");
-  const categoryTitle = document.querySelector(".category3__cards__title");
-  const categorySelect = document.getElementById("category-select");
-
-  // Supprime les éléments précédents
-  while (listMoviesCategory3.firstChild) {
-    listMoviesCategory3.removeChild(listMoviesCategory3.firstChild);
+    // Retourne les éléments pour les display.
+    const elementsCreated = [];
+    elementsCreated.push(bestMovieElementCreated);
+    elementsCreated.push(bestMoviesListElementsCreated);
+    elementsCreated.push(category1ListElementsCreated);
+    elementsCreated.push(category2ListElementsCreated);
+    elementsCreated.push(category3ListElementsCreated);
+    return elementsCreated;
   }
 
-  // Mise à jour du titre de la catégorie
-  categoryTitle.textContent = datasCategory3Filter.categoryName;
+  // ################################################################################################################# //
+  // ################################################## FONCTIONS #################################################### //
+  // ################################################################################################################# //
 
-  // Utiliser la fonction createCardsElements pour afficher les films
-  const categoryCardElements = createCardsElements(datasCategory3Filter.movies, "category__card");
-  
-  if (datasCategory3Filter.movies.length === 0) {
-    const noMoviesElement = createElement('p', {}, "Aucun film trouvé dans cette catégorie.");
-    listMoviesCategory3.appendChild(noMoviesElement);
-  } else {
-    // Remet à jour le bouton
-    const btn = document.getElementById("showMoreBtn4");
-    btn.textContent = "Voir plus +";
+  // CRÉATION DES MEILLEUR FILM ###################################################################################### //
+  function createBestMovieCard(BestMovieDetailsFetch) {
+    const bestMovieElementCreated = [];
 
-    // Ajouter les éléments de chaque film
-    listMoviesCategory3.appendChild(categoryCardElements);
+    // Crée l'image
+    const imageElement = createElement("img", { src: BestMovieDetailsFetch.image_url });
+    bestMovieElementCreated.push(imageElement);
+
+    // Crée le titre
+    const titleElement = createElement("h2", {}, BestMovieDetailsFetch.title);
+    bestMovieElementCreated.push(titleElement);
+
+    // Crée la description
+    const descriptionElement = createElement("p", {}, BestMovieDetailsFetch.description);
+    bestMovieElementCreated.push(descriptionElement);
+
+    // Crée le bouton "Détails"
+    const buttonElement = createElement("button", { class: "btn-details" }, "Détails");
+    bestMovieElementCreated.push(buttonElement);
+
+    return bestMovieElementCreated;
   }
 
-  // Sélectionner automatiquement la catégorie actuelle
-  const options = categorySelect.options;
-  for (let i = 0; i < options.length; i++) {
-    if (options[i].text === datasCategory3Filter.categoryName) {
-      options[i].selected = true; // Sélectionner si les noms correspondent
-      break;
-    }
+  // CRÉATION DES MEILLEURS FILMS #################################################################################### //
+  function createBestMoviesCards(bestMovies) {
+    const bestMoviesListElementsCreated = [];
+    const bestMoviesCardElements = createCardElements(bestMovies, "best-movies__card");
+    bestMoviesListElementsCreated.push(bestMoviesCardElements);
+    return bestMoviesListElementsCreated;
   }
-  
-  return listMoviesCategory3;
-}
 
-export function displayMovieDetails(element, movieDetails) {
-  // Supprimer tous les éléments existants ayant la classe "details"
-  const allDetailsElements = document.querySelectorAll(".details");
-  allDetailsElements.forEach((details) => {
-    details.parentNode.removeChild(details);
-  });
+  // CRÉATION DES MEILLEURS FILMS PAR CATEGORIE ###################################################################### //
+  function createBestMoviesCardsByCategory(datasCategoryFilter) {
+    const bestMoviesListElementsCreated = [];
+    const categoryTitle = datasCategoryFilter.categoryName;
+    const categoryCardElements = createCardElements(datasCategoryFilter.movies, "category__card");
+    bestMoviesListElementsCreated.push(categoryCardElements);
+    bestMoviesListElementsCreated.push(categoryTitle);
+    return bestMoviesListElementsCreated;
+  }
 
-  // Créer l'élément principal pour les détails
-  const detailsElement = createElement("div", { class: "details" });
+  // CRÉATION MEILLEURS FILMS DE LA CATÉGORIE 3 ###################################################################### //
+  export function createThirdBestMoviesCardsCategory(allCategories, datasCategory3Filter) {
+    // Utilisation de la fonction générique pour créer la catégorie 3 (fragmentElement et title)
+    const listMoviesCategory3 = createBestMoviesCardsByCategory(datasCategory3Filter, ".category3__cards");
 
-  // Créer le conteneur pour le titre et le bouton de fermeture
-  const titleContainer = createElement("div", { class: "title-container" });
+    // Crée un tableau pour contenir les éléments créés (cartes de films, titre, et options de menu déroulant)
+    const context = [];
 
-  // Créer le bouton de fermeture
-  const closeButton = createElement("span", { class: "close" }, "×");
-  closeButton.addEventListener("click", () => {
-    detailsElement.style.display = "none"; // Cache la section des détails
-  });
+    // Crée les options du menu déroulant
+    const categorySelect = document.createElement("select"); // ou récupérer l'élément existant via son ID si nécessaire
+    const defaultOption = createElement("option", { value: "", disabled: true }, "Sélectionnez une catégorie");
 
-  // Créer l'élément du titre
-  const titleElement = createElement("h2", {}, movieDetails.title);
+    // Prépare un tableau d'options à ajouter dans display
+    const options = [defaultOption]; // Ajoute l'option par défaut dans un tableau
 
-  // Ajouter le titre et la croix au conteneur du titre
-  titleContainer.appendChild(titleElement);
-  titleContainer.appendChild(closeButton);
+    // Utilisation du forEach pour préparer les options dynamiques
+    allCategories.forEach((category) => {
+      const option = createElement("option", { value: category.name }, category.name);
+      if (category.name === datasCategory3Filter.categoryName) {
+        option.selected = true; // Sélectionne la catégorie actuelle
+      }
+      options.push(option); // Ajoute les options dans le tableau
+    });
 
-  // Créer et ajouter les éléments de texte
-  const yearGenreElement = createElement("span", {}, `${movieDetails.year} - ${movieDetails.genres.join(", ")}`);
-  
-  const rated = (!movieDetails.rated || movieDetails.rated.toLowerCase().includes("not rated")) 
-    ? "Non classifié" 
-    : movieDetails.rated;
-  const classificationDurationCountryElement = createElement("span", {}, `PG-${rated} - ${movieDetails.duration} minutes (${movieDetails.countries.join("/")})`);
+    // Pousse les éléments dans le contexte pour les retourner
+    context.push(listMoviesCategory3); // Fragment des cartes de films
+    context.push(categorySelect); // Le select sans options encore ajoutées
+    context.push(options); // Ajoute le tableau d'options pour gestion dans display
 
-  const imdbScoreElement = createElement("span", {}, `IMDB score: ${movieDetails.imdb_score}/10`);
-  const budgetElement = createElement("span", {}, `Budget: ${movieDetails.budget} ${movieDetails.budget_currency}`);
+    return context; // Retourne le contexte contenant les éléments créés
+  }
 
-  const directorElement = createElement("p", { class: "director" });
-  const directorElementTitle = createElement("span", {}, "Réalisé par: ");
-  const director = createElement("span", {}, movieDetails.directors.join(", "));
-  directorElement.appendChild(directorElementTitle);
-  directorElement.appendChild(director);
+  // CRÉATION DÉTAILS FILM LORS DU CLIQUE SUR BOUTON "DÉTAILS" ####################################################### //
+  export function createMovieDetailsCard(movieDetails) {
+    const elementsCreated = [];
 
-  const descriptionElement = createElement("p", {}, movieDetails.description);
-  const imageUrlElement = createElement("img", { src: movieDetails.image_url });
-  
-  const actorsElement = createElement("p", { class: "actors" });
-  const actorsElementTitle = createElement("span", {}, "Avec: ");
-  const actors = createElement("span", {}, movieDetails.actors.join(", "));
-  actorsElement.appendChild(actorsElementTitle);
-  actorsElement.appendChild(actors);
+    // Créer l'élément principal pour les détails
+    const detailsElement = createElement("div", { class: "details" });
+    elementsCreated.push(detailsElement);
 
-  // Ajouter tous les éléments de détail créés dans l'élément principal
-  detailsElement.appendChild(titleContainer);
-  detailsElement.appendChild(yearGenreElement);
-  detailsElement.appendChild(classificationDurationCountryElement);
-  detailsElement.appendChild(imdbScoreElement);
-  detailsElement.appendChild(budgetElement);
-  detailsElement.appendChild(directorElement);
-  detailsElement.appendChild(descriptionElement);
-  detailsElement.appendChild(imageUrlElement);
-  detailsElement.appendChild(actorsElement);
+    // Créer le conteneur pour le titre et le bouton de fermeture
+    const titleContainer = createElement("div", { class: "title-container" });
+    elementsCreated.push(titleContainer);
 
-  // Ajouter cet élément de détails à l'élément parent fourni
-  element.appendChild(detailsElement);
-}
+    // Créer le bouton de fermeture
+    const closeButton = createElement("span", { class: "close" }, "×");
+    closeButton.addEventListener("click", () => {
+      detailsElement.style.display = "none"; // Cache la section des détails
+    });
+    elementsCreated.push(closeButton);
+
+    // Créer l'élément du titre
+    const titleElement = createElement("h2", {}, movieDetails.title);
+    elementsCreated.push(titleElement);
+
+    // Créer et ajouter les éléments de texte
+    const yearGenreElement = createElement("span", {}, `${movieDetails.year} - ${movieDetails.genres.join(", ")}`);
+    elementsCreated.push(yearGenreElement);
+
+    const rated =
+      !movieDetails.rated || movieDetails.rated.toLowerCase().includes("not rated")
+        ? "Non classifié"
+        : movieDetails.rated;
+    const classificationDurationCountryElement = createElement(
+      "span",
+      {},
+      `PG-${rated} - ${movieDetails.duration} minutes (${movieDetails.countries.join("/")})`,
+    );
+    elementsCreated.push(classificationDurationCountryElement);
+
+    const imdbScoreElement = createElement("span", {}, `IMDB score: ${movieDetails.imdb_score}/10`);
+    elementsCreated.push(imdbScoreElement);
+
+    const budgetElement = createElement("span", {}, `Budget: ${movieDetails.budget} ${movieDetails.budget_currency}`);
+    elementsCreated.push(budgetElement);
+
+    // Réalisateurs
+    const directorElement = createElement("p", { class: "director" });
+    const directorElementTitle = createElement("span", {}, "Réalisé par: ");
+    const director = createElement("span", {}, movieDetails.directors.join(", "));
+    elementsCreated.push(directorElement);
+    elementsCreated.push(directorElementTitle);
+    elementsCreated.push(director);
+
+    // Acteurs
+    const actorsElement = createElement("p", { class: "actors" });
+    const actorsElementTitle = createElement("span", {}, "Avec: ");
+    const actors = createElement("span", {}, movieDetails.actors.join(", "));
+    elementsCreated.push(actorsElement);
+    elementsCreated.push(actorsElementTitle);
+    elementsCreated.push(actors);
+
+    const descriptionElement = createElement("p", {}, movieDetails.description);
+    elementsCreated.push(descriptionElement);
+
+    const imageUrlElement = createElement("img", { src: movieDetails.image_url });
+    elementsCreated.push(imageUrlElement);
+
+    // Retourne tous les éléments créés sous forme de tableau
+    return elementsCreated;
+  }
+
+  // ################################################################################################################# //
+  // ############################################## FIN CONSTRUCTOR.JS ############################################### //
+  // ################################################################################################################# //

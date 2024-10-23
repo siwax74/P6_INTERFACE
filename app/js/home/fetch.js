@@ -2,8 +2,19 @@
 // ################################################## FETCH.JS ##################################################### //
 // ################################################################################################################# //
 
+// CE FICHIER CONTIENT DES FONCTIONS ASYNCHRONES RESPONSABLES DE LA RÉCUPÉRATION DES DONNÉES DE FILMS À PARTIR D'UNE API :
+// - FETCHBESTMOVIES : RÉCUPÈRE UNE LISTE DES MEILLEURS FILMS AVEC UN SCORE IMDB MINIMUM.
+// - FETCHMOVIEDETAILS : RÉCUPÈRE LES DÉTAILS D'UN FILM SPÉCIFIQUE PAR SON IDENTIFIANT.
+// - FETCHBESTMOVIESCATEGORY : RÉCUPÈRE UNE LISTE DES MEILLEURS FILMS DANS UNE CATÉGORIE SPÉCIFIQUE.
+// - FETCHALLCATEGORIES : RÉCUPÈRE LES NOMS DES CATÉGORIES DE FILMS DISPONIBLES.
+// - FETCHMOVIEBYNAME : RÉCUPÈRE UN FILM PAR SON NOM.
+
+// ################################################################################################################# //
+// ################################################## FONCTIONS #################################################### //
+// ################################################################################################################# //
+
 // FETCH LES MEILLEURS FILMS ####################################################################################### //
-export async function FetchBestMovies(protocol, domain, urlApi) {
+export async function fetchBestMovies(protocol, domain, urlApi) {
   let url = `${protocol}://${domain}/${urlApi}/titles/?imdb_score_min=9&page_size=50`;
   try {
     const response = await fetch(url);
@@ -13,7 +24,7 @@ export async function FetchBestMovies(protocol, domain, urlApi) {
     }
 
     const data = await response.json();
-    console.log(data.results)
+    console.log(data.results);
     return data.results;
   } catch (error) {
     console.error("Erreur lors de la récupération des données :", error);
@@ -34,12 +45,12 @@ export async function fetchMovieDetails(protocol, domain, urlApi, bestMovie) {
 }
 
 // FETCH LES MEILLEURS FILMS PAR CATEGORIES ######################################################################## //
-export async function FetchBestMoviesCategory(protocol, domain, urlApi, categoryName) {
+export async function fetchBestMoviesCategory(protocol, domain, urlApi, categoryName) {
   let url = `${protocol}://${domain}/${urlApi}/titles/?imdb_score_min=8&page_size=50&genre=${categoryName}`;
   try {
     const response = await fetch(url);
     const datas = await response.json();
-    console.log("ici la", datas)
+    console.log("ici la", datas);
     return datas;
   } catch (error) {
     console.error("Erreur lors de la récupération des données :", error);
@@ -47,7 +58,7 @@ export async function FetchBestMoviesCategory(protocol, domain, urlApi, category
   }
 }
 // FETCH LES NOMS DES CATEGORIES DISPONIBLE ######################################################################## //
-export async function FetchAllCategories(protocol, domain, urlApi) {
+export async function fetchAllCategories(protocol, domain, urlApi) {
   let url = `${protocol}://${domain}/${urlApi}/genres/?page_size=25`;
   try {
     const response = await fetch(url);
@@ -73,3 +84,7 @@ export async function fetchMovieByName(protocol, domain, urlApi, movieTitle) {
     return [];
   }
 }
+
+// ################################################################################################################# //
+// ################################################## FIN FETCH.JS ################################################# //
+// ################################################################################################################# //
