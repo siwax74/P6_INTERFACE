@@ -13,6 +13,9 @@
     header a {
         height: 100px;
     }
+    .best-movie .details { 
+        left: 25%;
+    }
     .best-movies__card img {
         height: 400px;
     }
@@ -26,6 +29,9 @@
     .container {
         max-width: 1440px;
     }
+    .best-movie .details { 
+        left: 32%;
+    }
     .best-movies__card::after {
         width: 96.5%;
     }
@@ -36,7 +42,7 @@
         width: 93.1%;
     }
     .best-movies__card img {
-        height: 570px;
+        height: 470px;
     }
 
     .category__card::after {
@@ -49,7 +55,7 @@
         width: 93.1%;
     }
     .category__card img {
-        height: 570px;
+        aspect-ratio: 1/1;
     }
 
   }

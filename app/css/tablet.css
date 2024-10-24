@@ -44,6 +44,10 @@ h3 {
     .best-movie__details h2 {
         padding-left: 10px;
     }
+    .best-movie__details .details {
+        width: 40%;
+        left: 30%;
+    }
     /* MEILLEUR FILMS */
     .best-movies {
         align-items: inherit;

@@ -56,6 +56,7 @@
   main {
     display: flex;
     flex-direction: column;
+    margin-bottom: 150px;
   }
   
   /* SECTION ######################################################################################################### */
@@ -277,6 +278,14 @@
     width: 40%;
     margin: 0px 5px 15px;
     border-radius: 15px;
+    cursor: pointer;
+    background: linear-gradient(to right, #00083f, #767989);
+    border: 1px solid red;
+    box-shadow: 0px 0px 0px 2px rgb(204 45 45 / 50%);
+   
+}
+.category-span select option {
+  cursor: pointer;
 }
   /* BOUTON DE DETAILS ############################################################################################### */
   .btn-details {
@@ -299,7 +308,7 @@
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
     cursor: pointer;
   }
-  
+
   /* DETAILS D'UN FILM LORS D'UN CLIQUE SUR "Détails" ############################################################## */
   .details {
     display: flex;
@@ -317,6 +326,7 @@
     justify-content: flex-start;
     padding: inherit;
     margin: 3px;
+    text-align: inherit;
   }
 
   .details h2::before {
@@ -385,6 +395,7 @@
     width: 100%;
     margin: 3px;
   }
+  
   /* BOUTON "VOIR PLUS" ############################################################################################ */
   .btn-show-more {
     width: 33%;

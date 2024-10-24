@@ -162,7 +162,8 @@ export function createMovieDetailsCard(movieDetails) {
   const imdbScoreElement = createElement("span", {}, `IMDB score: ${movieDetails.imdb_score}/10`);
   elementsCreated.push(imdbScoreElement);
 
-  const budgetElement = createElement("span", {}, `Budget: ${movieDetails.budget} ${movieDetails.budget_currency}`);
+  const budgetText = movieDetails.budget !== null ? `Budget: ${movieDetails.budget} ${movieDetails.budget_currency}` : "Budget: Non spécifié";
+  const budgetElement = createElement("span", {}, budgetText);
   elementsCreated.push(budgetElement);
 
   // Réalisateurs

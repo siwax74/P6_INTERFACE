@@ -123,11 +123,11 @@ export function updateThirdCategory(datasCategory3Filter) {
     const noMoviesElement = createElement("p", {}, "Aucun film trouvé dans cette catégorie.");
     noMoviesElement.style.padding = "25px";
     const showMoreBtn4 = document.getElementById("showMoreBtn4");
-    showMoreBtn4.style.display = "none";
+    showMoreBtn4.disabled = true;
     listMoviesCategory3.appendChild(noMoviesElement);
   } else {
     listMoviesCategory3.appendChild(categoryCardElements);
-    showMoreBtn4.style.display = "block";
+    showMoreBtn4.disabled = false;
   }
   return listMoviesCategory3;
 }

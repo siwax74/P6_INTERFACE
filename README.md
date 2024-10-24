@@ -54,8 +54,8 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
   python manage.py create_db
   python manage.py runserver
   ```
-2. Ouvrez le dossier templates :
-- Cliquer-droit sur le fichier [home.html](/app/templates/home.html);
+2. Ouvrez le dossier templates/home :
+- Cliquer-droit sur le fichier [home.html](/app/templates/home/home.html);
 - Ouvrir le fichier avec votre serveur de développement local. (Exemple : Live Server);
 
 ## 🛠 **Maintenance et Améliorations Futures**
