@@ -30,7 +30,7 @@ export async function fetchBestMovies(protocol, domain, urlApi) {
     return [];
   }
 }
-
+// FETCH LES DETAILS D'UN FILM ######################################################################## //
 export async function fetchMovieDetails(protocol, domain, urlApi, bestMovie) {
   let url = `${protocol}://${domain}/${urlApi}/titles/${bestMovie.id}`;
   try {
@@ -56,6 +56,7 @@ export async function fetchBestMoviesCategory(protocol, domain, urlApi, category
     return [];
   }
 }
+
 // FETCH LES NOMS DES CATEGORIES DISPONIBLE ######################################################################## //
 export async function fetchAllCategories(protocol, domain, urlApi) {
   let url = `${protocol}://${domain}/${urlApi}/genres/?page_size=25`;
@@ -71,6 +72,7 @@ export async function fetchAllCategories(protocol, domain, urlApi) {
     return [];
   }
 }
+
 // FETCH UN LIVRE PAR SON NOM ##################################################################################### //
 export async function fetchMovieByName(protocol, domain, urlApi, movieTitle) {
   let url = `${protocol}://${domain}/${urlApi}/titles/?title=${movieTitle}`;

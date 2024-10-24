@@ -14,7 +14,13 @@
 // IMPORT DES MODULES ############################################################################################## //
 import { fetchBestMovies, fetchBestMoviesCategory, fetchMovieDetails, fetchMovieByName } from "./fetch.js";
 import { createMovieDetailsCard } from "./constructor.js";
-import { sortBestMovie, sortMoviesCategory, sortMovieFetchByName, updateThirdCategory } from "../utils/utils.js";
+import {
+  sortBestMovie,
+  sortMoviesCategory,
+  sortMovieFetchByName,
+  updateThirdCategory,
+  toggleFilmsVisibility,
+} from "../utils/utils.js";
 import { displayMovieDetails } from "./display.js";
 
 // ################################################################################################################# //
@@ -84,23 +90,9 @@ function eventsListenerBestBooks(bestMoviesListElements, protocol, domain, urlAp
   // Sélectionner tous les films cachés avec la classe 'hidden'
   const hiddenFilms = bestMoviesListElements.querySelectorAll(".best-movies__card.hidden");
 
-  // Variable pour stocker l'état actuel du bouton
-  let isShowingMore = false;
-
   // Ajouter un écouteur d'événements pour gérer le clic sur le bouton
   showMoreBtn.addEventListener("click", function () {
-    // Basculer la classe 'hidden' sur chaque film pour l'afficher ou le cacher
-    hiddenFilms.forEach((film) => {
-      film.classList.toggle("hidden");
-    });
-    // Mettre à jour l'état actuel du bouton
-    isShowingMore = !isShowingMore;
-    // Changer le texte du bouton en fonction de l'état actuel
-    if (isShowingMore) {
-      showMoreBtn.textContent = "Voir moins -";
-    } else {
-      showMoreBtn.textContent = "Voir plus +";
-    }
+    toggleFilmsVisibility(hiddenFilms, showMoreBtn);
   });
 }
 
@@ -130,23 +122,9 @@ function eventsListenerCategory1(category1Elements, protocol, domain, urlApi) {
   // Sélectionner tous les films cachés avec la classe 'hidden'
   const hiddenFilmsCategory1 = category1Elements.querySelectorAll(".category__card.hidden");
 
-  // Variable pour stocker l'état actuel du bouton
-  let isShowingMore = false;
-
   // Ajouter un écouteur d'événements pour gérer le clic sur le bouton
   showMoreBtn2.addEventListener("click", function () {
-    // Basculer la classe 'hidden' sur chaque film pour l'afficher ou le cacher
-    hiddenFilmsCategory1.forEach((film) => {
-      film.classList.toggle("hidden");
-    });
-    // Mettre à jour l'état actuel du bouton
-    isShowingMore = !isShowingMore;
-    // Changer le texte du bouton en fonction de l'état actuel
-    if (isShowingMore) {
-      showMoreBtn2.textContent = "Voir moins -";
-    } else {
-      showMoreBtn2.textContent = "Voir plus +";
-    }
+    toggleFilmsVisibility(hiddenFilmsCategory1, showMoreBtn2);
   });
 }
 
@@ -170,28 +148,15 @@ function eventsListenerCategory2(category2Elements, protocol, domain, urlApi) {
       const elementsDisplay = displayMovieDetails(parentCard, elementsCreated);
     });
   });
+
   // Sélectionner le bouton "Voir plus" par son ID
   const showMoreBtn3 = document.getElementById("showMoreBtn3");
   // Sélectionner tous les films cachés avec la classe 'hidden'
   const hiddenFilmsCategory2 = category2Elements.querySelectorAll(".category__card.hidden");
 
-  // Variable pour stocker l'état actuel du bouton
-  let isShowingMore = false;
-
   // Ajouter un écouteur d'événements pour gérer le clic sur le bouton
   showMoreBtn3.addEventListener("click", function () {
-    // Basculer la classe 'hidden' sur chaque film pour l'afficher ou le cacher
-    hiddenFilmsCategory2.forEach((film) => {
-      film.classList.toggle("hidden");
-    });
-    // Mettre à jour l'état actuel du bouton
-    isShowingMore = !isShowingMore;
-    // Changer le texte du bouton en fonction de l'état actuel
-    if (isShowingMore) {
-      showMoreBtn3.textContent = "Voir moins -";
-    } else {
-      showMoreBtn3.textContent = "Voir plus +";
-    }
+    toggleFilmsVisibility(hiddenFilmsCategory2, showMoreBtn3);
   });
 }
 
@@ -200,7 +165,7 @@ function eventsListenerCategory3(category3Elements, protocol, domain, urlApi) {
   const select = document.getElementById("category-select");
   const showMoreBtn4 = document.getElementById("showMoreBtn4");
 
-  // Function to handle the click on detail buttons
+  // Fonction pour gérer le clic sur les boutons "Détails"
   const handleButtonClick = async (button) => {
     const parentCard = button.closest(".category__card");
     const movieTitle = parentCard.querySelector("h3").textContent;
@@ -211,52 +176,34 @@ function eventsListenerCategory3(category3Elements, protocol, domain, urlApi) {
     displayMovieDetails(parentCard, elementsCreated);
   };
 
-  // Function to handle the display of hidden movies
-  const handleShowMoreClick = (hiddenFilms) => {
-    hiddenFilms.forEach((film) => {
-      film.classList.toggle("hidden");
-    });
-
-    // Change the button text based on the visibility of hidden films
-    if (hiddenFilms[0].classList.contains("hidden")) {
-      showMoreBtn4.textContent = "Voir plus +";
-    } else {
-      showMoreBtn4.textContent = "Voir moins -";
-    }
-  };
-
-  // Function to handle category changes
+  // Fonction pour gérer les changements de catégorie
   const handleCategoryChange = async () => {
     const selectedCategory = select.value;
     const datasCategory3 = await fetchBestMoviesCategory(protocol, domain, urlApi, selectedCategory);
     const datasCategory3Filter = sortMoviesCategory(datasCategory3, selectedCategory);
-    
-    // Update the category UI
+
     category3Elements = updateThirdCategory(datasCategory3Filter);
-    attachEventListeners(); // Reattach event listeners
+    attachEventListeners();
   };
 
-  // Attach event listeners
+  // Fonction pour attacher les écouteurs d'événements
   const attachEventListeners = () => {
     const buttons = category3Elements.querySelectorAll(".btn-details");
     const hiddenFilmsCategory3 = category3Elements.querySelectorAll(".category__card.hidden");
 
-    buttons.forEach(button => {
-      button.removeEventListener("click", handleButtonClick); // Remove old listener if necessary
+    buttons.forEach((button) => {
+      button.removeEventListener("click", handleButtonClick);
       button.addEventListener("click", () => handleButtonClick(button));
     });
 
-    showMoreBtn4.removeEventListener("click", () => handleShowMoreClick(hiddenFilmsCategory3)); // Remove old listener
-    showMoreBtn4.addEventListener("click", () => handleShowMoreClick(hiddenFilmsCategory3));
+    // Utilisation de la fonction réutilisable toggleFilmsVisibility
+    showMoreBtn4.removeEventListener("click", () => toggleFilmsVisibility(hiddenFilmsCategory3, showMoreBtn4));
+    showMoreBtn4.addEventListener("click", () => toggleFilmsVisibility(hiddenFilmsCategory3, showMoreBtn4));
   };
 
-  attachEventListeners(); // Call the function to attach event listeners
-
+  attachEventListeners();
   select.addEventListener("change", handleCategoryChange);
 }
-
-
-
 
 // ################################################################################################################# //
 // ################################################## FIN EVENTS.JS ################################################ //

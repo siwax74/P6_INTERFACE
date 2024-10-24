@@ -123,17 +123,29 @@ export function updateThirdCategory(datasCategory3Filter) {
     const noMoviesElement = createElement("p", {}, "Aucun film trouvé dans cette catégorie.");
     noMoviesElement.style.padding = "25px";
     const showMoreBtn4 = document.getElementById("showMoreBtn4");
-    showMoreBtn4.style.display = "none"
-
+    showMoreBtn4.style.display = "none";
     listMoviesCategory3.appendChild(noMoviesElement);
   } else {
-    // Remet à jour le bouton "Voir plus"
-    const btn = document.getElementById("showMoreBtn4");
-    btn.textContent = "Voir plus +";
-    // Ajoute les cartes de films à la catégorie
     listMoviesCategory3.appendChild(categoryCardElements);
+    showMoreBtn4.style.display = "block";
   }
   return listMoviesCategory3;
+}
+
+// FONCTION REUTILISABLE POUR GESTION DU BOUTON "Voir plus +" / "Voir moins -"
+export function toggleFilmsVisibility(hiddenFilmsCategory, showMoreBtn) {
+  if (!hiddenFilmsCategory || hiddenFilmsCategory.length === 0) {
+    return; // Exit if there are no hidden films
+  }
+  hiddenFilmsCategory.forEach((film) => {
+    film.classList.toggle("hidden"); // Toggle visibility
+  });
+  // Update button text based on visibility
+  if (hiddenFilmsCategory[0].classList.contains("hidden")) {
+    showMoreBtn.textContent = "Voir plus +";
+  } else {
+    showMoreBtn.textContent = "Voir moins -";
+  }
 }
 
 // ################################################################################################################# //
