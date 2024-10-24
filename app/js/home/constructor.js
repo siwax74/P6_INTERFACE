@@ -80,7 +80,7 @@ export function createElements(
   }
 
   // CRÉATION DES MEILLEURS FILMS PAR CATEGORIE ###################################################################### //
-  function createBestMoviesCardsByCategory(datasCategoryFilter) {
+  export function createBestMoviesCardsByCategory(datasCategoryFilter) {
     const bestMoviesListElementsCreated = [];
     const categoryTitle = datasCategoryFilter.categoryName;
     const categoryCardElements = createCardElements(datasCategoryFilter.movies, "category__card");
@@ -185,6 +185,10 @@ export function createElements(
     elementsCreated.push(descriptionElement);
 
     const imageUrlElement = createElement("img", { src: movieDetails.image_url });
+    // Gestion de l'erreur de chargement de l'image (404 ou autre)
+    imageUrlElement.onerror = function () {
+      imageUrlElement.src = "/app/medias/images/no_image.png"; // Chemin vers une image par défaut
+    };
     elementsCreated.push(imageUrlElement);
 
     // Retourne tous les éléments créés sous forme de tableau

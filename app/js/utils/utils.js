@@ -87,15 +87,21 @@ export function createCardElements(movies, className) {
 
     // Ajoute l'image du film
     const imageElement = createElement("img", { src: movie.image_url });
+    let hasFailed = false;
+    // Gestion de l'erreur de chargement de l'image (404 ou autre)
+    imageElement.onerror = function () {
+      if (!hasFailed) {
+        hasFailed = true;
+        imageElement.src = "/app/medias/images/no_image.png"; // Chemin vers une image par défaut
+      }
+    };
     card.appendChild(imageElement);
 
     // Ajoute un bouton "Détails"
     const buttonElement = createElement("button", { class: "btn-details" }, "Détails");
     card.appendChild(buttonElement);
-
     fragment.appendChild(card);
   });
-
   return fragment;
 }
 
@@ -103,8 +109,6 @@ export function createCardElements(movies, className) {
 export function updateThirdCategory(datasCategory3Filter) {
   const listMoviesCategory3 = document.querySelector(".category3__cards");
   const categoryTitle = document.querySelector(".category3__cards__title");
-  const categorySelect = document.getElementById("category-select");
-
   // Supprime les anciens éléments de la catégorie
   while (listMoviesCategory3.firstChild) {
     listMoviesCategory3.removeChild(listMoviesCategory3.firstChild);
@@ -112,31 +116,23 @@ export function updateThirdCategory(datasCategory3Filter) {
 
   // Met à jour le titre de la catégorie
   categoryTitle.textContent = datasCategory3Filter.categoryName;
-
   // Crée et affiche les cartes de films
   const categoryCardElements = createCardElements(datasCategory3Filter.movies, "category__card");
 
   if (datasCategory3Filter.movies.length === 0) {
     const noMoviesElement = createElement("p", {}, "Aucun film trouvé dans cette catégorie.");
+    noMoviesElement.style.padding = "25px";
+    const showMoreBtn4 = document.getElementById("showMoreBtn4");
+    showMoreBtn4.style.display = "none"
+
     listMoviesCategory3.appendChild(noMoviesElement);
   } else {
     // Remet à jour le bouton "Voir plus"
     const btn = document.getElementById("showMoreBtn4");
     btn.textContent = "Voir plus +";
-
     // Ajoute les cartes de films à la catégorie
     listMoviesCategory3.appendChild(categoryCardElements);
   }
-
-  // Sélectionne automatiquement la catégorie correspondante dans le menu déroulant
-  const options = categorySelect.options;
-  for (let i = 0; i < options.length; i++) {
-    if (options[i].text === datasCategory3Filter.categoryName) {
-      options[i].selected = true; // Sélectionne l'option si les noms correspondent
-      break;
-    }
-  }
-
   return listMoviesCategory3;
 }
 

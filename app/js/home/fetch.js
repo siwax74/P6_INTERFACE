@@ -24,7 +24,6 @@ export async function fetchBestMovies(protocol, domain, urlApi) {
     }
 
     const data = await response.json();
-    console.log(data.results);
     return data.results;
   } catch (error) {
     console.error("Erreur lors de la récupération des données :", error);
@@ -50,8 +49,8 @@ export async function fetchBestMoviesCategory(protocol, domain, urlApi, category
   try {
     const response = await fetch(url);
     const datas = await response.json();
-    console.log("ici la", datas);
     return datas;
+    
   } catch (error) {
     console.error("Erreur lors de la récupération des données :", error);
     return [];

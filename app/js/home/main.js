@@ -39,7 +39,6 @@ async function init() {
 
     // Sort les films les mieux noté
     const bestMovies = sortBestMovies(bestMoviesFetch);
-    console.log(bestMovies);
 
     // Récupère la Catégorie 1 et ces films
     const category1Name = "History";

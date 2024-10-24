@@ -31,10 +31,10 @@ export function listenEvents(elements, protocol, domain, urlApi) {
 
   // On appelle les fonctions pour attacher les écouteurs d'événements
   eventsListenerBestBook(bestMovieElement, protocol, domain, urlApi);
-  eventsListenerBestBooks(bestMoviesListElements);
-  eventsListenerCategory1(category1Elements);
-  eventsListenerCategory2(category2Elements);
-  eventsListenerCategory3(category3Elements);
+  eventsListenerBestBooks(bestMoviesListElements, protocol, domain, urlApi);
+  eventsListenerCategory1(category1Elements, protocol, domain, urlApi);
+  eventsListenerCategory2(category2Elements, protocol, domain, urlApi);
+  eventsListenerCategory3(category3Elements, protocol, domain, urlApi);
 }
 
 // ################################################################################################################# //
@@ -43,10 +43,8 @@ export function listenEvents(elements, protocol, domain, urlApi) {
 
 // FONCTION QUI GERE L'ECOUTEUR POUR LE MEILLEUR FILM ############################################################## //
 function eventsListenerBestBook(bestMovieElement, protocol, domain, urlApi) {
-  console.log("test", bestMovieElement);
   const button = bestMovieElement.querySelector(".btn-details");
   button.addEventListener("click", async function () {
-    console.log("Clic sur le bouton du premier élément");
     const movies = await fetchBestMovies(protocol, domain, urlApi);
     const movie = sortBestMovie(movies);
     const movieDetails = await fetchMovieDetails(protocol, domain, urlApi, movie);
@@ -56,7 +54,7 @@ function eventsListenerBestBook(bestMovieElement, protocol, domain, urlApi) {
 }
 
 // FONCTION QUI GERE L'ECOUTEUR POUR LES 6 MEILLEURS FILMS ######################################################### //
-function eventsListenerBestBooks(bestMoviesListElements) {
+function eventsListenerBestBooks(bestMoviesListElements, protocol, domain, urlApi) {
   const buttons = bestMoviesListElements.querySelectorAll(".btn-details");
 
   // Event listener for detail buttons
@@ -67,14 +65,12 @@ function eventsListenerBestBooks(bestMoviesListElements) {
 
       // Récupérer le titre du film à partir de l'élément <h3>
       const movieTitle = parentCard.querySelector("h3").textContent;
-      console.log("Titre du film cliqué :", movieTitle);
 
       // Attendre que la promesse soit résolue avant de continuer
       const movieFetch = await fetchMovieByName(protocol, domain, urlApi, movieTitle);
 
       // Sort le film en tableau depuis la promesse
       const movie = sortMovieFetchByName(movieFetch);
-      console.log(movie);
 
       // Récupère les détails du film
       const movieDetails = await fetchMovieDetails(protocol, domain, urlApi, movie);
@@ -85,7 +81,6 @@ function eventsListenerBestBooks(bestMoviesListElements) {
   });
   // Sélectionner le bouton "Voir plus" par son ID
   const showMoreBtn = document.getElementById("showMoreBtn");
-  console.log(showMoreBtn);
   // Sélectionner tous les films cachés avec la classe 'hidden'
   const hiddenFilms = bestMoviesListElements.querySelectorAll(".best-movies__card.hidden");
 
@@ -110,7 +105,7 @@ function eventsListenerBestBooks(bestMoviesListElements) {
 }
 
 // FONCTION QUI GERE L'ECOUTEUR DE LA 1ERE CATEGORIE ############################################################### //
-function eventsListenerCategory1(category1Elements) {
+function eventsListenerCategory1(category1Elements, protocol, domain, urlApi) {
   const buttons = category1Elements.querySelectorAll(".btn-details");
   buttons.forEach(function (button) {
     button.addEventListener("click", async function () {
@@ -118,16 +113,13 @@ function eventsListenerCategory1(category1Elements) {
       const parentCard = button.closest(".category__card");
       // Récupérer le titre du film à partir de l'élément <h3>
       const movieTitle = parentCard.querySelector("h3").textContent;
-      console.log("Titre du film cliqué :", movieTitle);
       // Attendre que la promesse soit résolue avant de continuer
       const movieFetch = await fetchMovieByName(protocol, domain, urlApi, movieTitle);
 
       // Sort le film en tableau depuis la promesse
       const movie = sortMovieFetchByName(movieFetch);
-      console.log(movie);
       // Récupère les détails du film
       const movieDetails = await fetchMovieDetails(protocol, domain, urlApi, movie);
-      console.log("Clic sur le bouton du troisième élément");
 
       const elementsCreated = createMovieDetailsCard(movieDetails);
       const elementsDisplay = displayMovieDetails(parentCard, elementsCreated);
@@ -135,7 +127,6 @@ function eventsListenerCategory1(category1Elements) {
   });
   // Sélectionner le bouton "Voir plus" par son ID
   const showMoreBtn2 = document.getElementById("showMoreBtn2");
-  console.log(showMoreBtn2);
   // Sélectionner tous les films cachés avec la classe 'hidden'
   const hiddenFilmsCategory1 = category1Elements.querySelectorAll(".category__card.hidden");
 
@@ -160,7 +151,7 @@ function eventsListenerCategory1(category1Elements) {
 }
 
 // FONCTION QUI GERE L'ECOUTEUR DE LA 2EME CATEGORIE ############################################################### //
-function eventsListenerCategory2(category2Elements) {
+function eventsListenerCategory2(category2Elements, protocol, domain, urlApi) {
   const buttons = category2Elements.querySelectorAll(".btn-details");
   buttons.forEach(function (button) {
     button.addEventListener("click", async function () {
@@ -168,24 +159,19 @@ function eventsListenerCategory2(category2Elements) {
       const parentCard = button.closest(".category__card");
       // Récupérer le titre du film à partir de l'élément <h3>
       const movieTitle = parentCard.querySelector("h3").textContent;
-      console.log("Titre du film cliqué :", movieTitle);
       // Attendre que la promesse soit résolue avant de continuer
       const movieFetch = await fetchMovieByName(protocol, domain, urlApi, movieTitle);
 
       // Sort le film en tableau depuis la promesse
       const movie = sortMovieFetchByName(movieFetch);
-      console.log(movie);
       // Récupère les détails du film
       const movieDetails = await fetchMovieDetails(protocol, domain, urlApi, movie);
-      console.log("Clic sur le bouton du troisième élément");
-
       const elementsCreated = createMovieDetailsCard(movieDetails);
       const elementsDisplay = displayMovieDetails(parentCard, elementsCreated);
     });
   });
   // Sélectionner le bouton "Voir plus" par son ID
   const showMoreBtn3 = document.getElementById("showMoreBtn3");
-  console.log(showMoreBtn3);
   // Sélectionner tous les films cachés avec la classe 'hidden'
   const hiddenFilmsCategory2 = category2Elements.querySelectorAll(".category__card.hidden");
 
@@ -210,64 +196,67 @@ function eventsListenerCategory2(category2Elements) {
 }
 
 // FONCTION QUI GERE L'ECOUTEUR DE LA 3EME CATEGORIE ############################################################### //
-function eventsListenerCategory3(category3Elements) {
+function eventsListenerCategory3(category3Elements, protocol, domain, urlApi) {
   const select = document.getElementById("category-select");
-  const buttons = category3Elements.querySelectorAll(".btn-details");
-  buttons.forEach(function (button) {
-    button.addEventListener("click", async function () {
-      // Récupérer l'élément parent (details-item) du bouton cliqué
-      const parentCard = button.closest(".category__card");
-      // Récupérer le titre du film à partir de l'élément <h3>
-      const movieTitle = parentCard.querySelector("h3").textContent;
-      // Attendre que la promesse soit résolue avant de continuer
-      const movieFetch = await fetchMovieByName(protocol, domain, urlApi, movieTitle);
-
-      // Sort le film en tableau depuis la promesse
-      const movie = sortMovieFetchByName(movieFetch);
-      console.log(movie);
-      // Récupère les détails du film
-      const movieDetails = await fetchMovieDetails(protocol, domain, urlApi, movie);
-      console.log("Clic sur le bouton du troisième élément");
-
-      const elementsCreated = createMovieDetailsCard(movieDetails);
-      const elementsDisplay = displayMovieDetails(parentCard, elementsCreated);
-    });
-  });
-  // Sélectionner le bouton "Voir plus" par son ID
   const showMoreBtn4 = document.getElementById("showMoreBtn4");
-  console.log(showMoreBtn4);
-  // Sélectionner tous les films cachés avec la classe 'hidden'
-  const hiddenFilmsCategory3 = category3Elements.querySelectorAll(".category__card.hidden");
 
-  // Variable pour stocker l'état actuel du bouton
-  let isShowingMore = false;
+  // Function to handle the click on detail buttons
+  const handleButtonClick = async (button) => {
+    const parentCard = button.closest(".category__card");
+    const movieTitle = parentCard.querySelector("h3").textContent;
+    const movieFetch = await fetchMovieByName(protocol, domain, urlApi, movieTitle);
+    const movie = sortMovieFetchByName(movieFetch);
+    const movieDetails = await fetchMovieDetails(protocol, domain, urlApi, movie);
+    const elementsCreated = createMovieDetailsCard(movieDetails);
+    displayMovieDetails(parentCard, elementsCreated);
+  };
 
-  // Ajouter un écouteur d'événements pour gérer le clic sur le bouton
-  showMoreBtn4.addEventListener("click", function () {
-    // Basculer la classe 'hidden' sur chaque film pour l'afficher ou le cacher
-    hiddenFilmsCategory3.forEach((film) => {
+  // Function to handle the display of hidden movies
+  const handleShowMoreClick = (hiddenFilms) => {
+    hiddenFilms.forEach((film) => {
       film.classList.toggle("hidden");
     });
-    // Mettre à jour l'état actuel du bouton
-    isShowingMore = !isShowingMore;
-    // Changer le texte du bouton en fonction de l'état actuel
-    if (isShowingMore) {
-      showMoreBtn4.textContent = "Voir moins -";
-    } else {
-      showMoreBtn4.textContent = "Voir plus +";
-    }
-  });
 
-  // Gérer le changement de catégorie via le menu déroulant
-  select.addEventListener("change", async function () {
+    // Change the button text based on the visibility of hidden films
+    if (hiddenFilms[0].classList.contains("hidden")) {
+      showMoreBtn4.textContent = "Voir plus +";
+    } else {
+      showMoreBtn4.textContent = "Voir moins -";
+    }
+  };
+
+  // Function to handle category changes
+  const handleCategoryChange = async () => {
     const selectedCategory = select.value;
     const datasCategory3 = await fetchBestMoviesCategory(protocol, domain, urlApi, selectedCategory);
     const datasCategory3Filter = sortMoviesCategory(datasCategory3, selectedCategory);
-    // Créer et afficher les films de la nouvelle catégorie
-    updateThirdCategory(datasCategory3Filter);
-    eventsListenerCategory3(category3Elements);
-  });
+    
+    // Update the category UI
+    category3Elements = updateThirdCategory(datasCategory3Filter);
+    attachEventListeners(); // Reattach event listeners
+  };
+
+  // Attach event listeners
+  const attachEventListeners = () => {
+    const buttons = category3Elements.querySelectorAll(".btn-details");
+    const hiddenFilmsCategory3 = category3Elements.querySelectorAll(".category__card.hidden");
+
+    buttons.forEach(button => {
+      button.removeEventListener("click", handleButtonClick); // Remove old listener if necessary
+      button.addEventListener("click", () => handleButtonClick(button));
+    });
+
+    showMoreBtn4.removeEventListener("click", () => handleShowMoreClick(hiddenFilmsCategory3)); // Remove old listener
+    showMoreBtn4.addEventListener("click", () => handleShowMoreClick(hiddenFilmsCategory3));
+  };
+
+  attachEventListeners(); // Call the function to attach event listeners
+
+  select.addEventListener("change", handleCategoryChange);
 }
+
+
+
 
 // ################################################################################################################# //
 // ################################################## FIN EVENTS.JS ################################################ //
