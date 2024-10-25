@@ -15,19 +15,7 @@
 // ################################################## FONCTIONS #################################################### //
 // ################################################################################################################# //
 
-// TRIE ET SÉLECTIONNE LE MEILLEUR FILM D'UNE LISTE ############################################################### //
-export function sortBestMovie(bestMovieFetch) {
-  return bestMovieFetch.sort((a, b) => {
-    // Trier d'abord par imdb_score
-    if (b.imdb_score !== a.imdb_score) {
-      return b.imdb_score - a.imdb_score;
-    }
-    // Si les imdb_scores sont égaux, trier par nombre de votes
-    return b.votes - a.votes;
-  })[0];
-}
-
-// TRIE ET SÉLECTIONNE LES MEILLEURS FILMS (HORS PREMIER) ######################################################### //
+// TRIE ET SÉLECTIONNE LES MEILLEURS FILMS  ######################################################################## //
 export function sortBestMovies(bestMoviesFetch) {
   return bestMoviesFetch
     .sort((a, b) => {
@@ -36,7 +24,7 @@ export function sortBestMovies(bestMoviesFetch) {
       }
       return b.votes - a.votes;
     })
-    .slice(1, 7); // Retourne les films de la 2ème à la 7ème place
+    .slice(0, 7); // Retourne les films de la 1ere à la 7ème place
 }
 
 // TRIE LES FILMS D'UNE CATÉGORIE ET RETOURNE LES 6 MEILLEURS ##################################################### //

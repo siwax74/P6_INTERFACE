@@ -34,11 +34,13 @@ async function init() {
     const bestMoviesFetch = await fetchBestMovies(protocol, domain, urlApi);
 
     // Sort le film le mieu noté
-    const bestMovie = sortBestMovie(bestMoviesFetch);
-    const BestMovieDetailsFetch = await fetchMovieDetails(protocol, domain, urlApi, bestMovie);
+    const bestMovie = sortBestMovies(bestMoviesFetch);
+    const bestMoviesorted = bestMovie[0]
+    const BestMovieDetailsFetch = await fetchMovieDetails(protocol, domain, urlApi, bestMoviesorted);
 
     // Sort les films les mieux noté
     const bestMovies = sortBestMovies(bestMoviesFetch);
+    const bestMoviesSorted =  bestMovies.slice(1, 7);
 
     // Récupère la Catégorie 1 et ces films
     const category1Name = "History";
@@ -61,7 +63,7 @@ async function init() {
     // Construit les éléments du DOM
     const elementsCreated = createElements(
       BestMovieDetailsFetch,
-      bestMovies,
+      bestMoviesSorted,
       datasCategory1Filter,
       datasCategory2Filter,
       allCategories,
