@@ -103,7 +103,7 @@
     display: inline-block;
     width: 30px;
     height: 30px;
-    background-image: url("/app/medias/icons/best_movie.png");
+    background-image: url("/app/medias/home/icons/best_movie.png");
     background-size: cover;
     color: wheat;
     margin-right: 1px;
@@ -167,7 +167,7 @@
     display: inline-block;
     width: 30px;
     height: 30px;
-    background-image: url("/app/medias/icons/best_movies.png");
+    background-image: url("/app/medias/home/icons/best_movies.png");
     background-size: cover;
     color: white;
     margin-right: 1px;
@@ -225,7 +225,7 @@
     display: inline-block;
     width: 30px;
     height: 30px;
-    background-image: url("/app/medias/icons/category.png");
+    background-image: url("/app/medias/home/icons/category.png");
     background-size: cover;
     color: white;
     margin-right: 1px;
