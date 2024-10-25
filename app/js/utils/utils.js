@@ -15,7 +15,7 @@
 // ################################################## FONCTIONS #################################################### //
 // ################################################################################################################# //
 
-// TRIE ET SÉLECTIONNE LES MEILLEURS FILMS  ######################################################################## //
+// TRIE ET SÉLECTIONNE LES MEILLEURS FILMS (HORS PREMIER) ######################################################### //
 export function sortBestMovies(bestMoviesFetch) {
   return bestMoviesFetch
     .sort((a, b) => {
@@ -24,7 +24,7 @@ export function sortBestMovies(bestMoviesFetch) {
       }
       return b.votes - a.votes;
     })
-    .slice(0, 7); // Retourne les films de la 1ere à la 7ème place
+    .slice(0, 7); // Retourne les films de la 2ème à la 7ème place
 }
 
 // TRIE LES FILMS D'UNE CATÉGORIE ET RETOURNE LES 6 MEILLEURS ##################################################### //

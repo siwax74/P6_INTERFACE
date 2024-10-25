@@ -14,7 +14,7 @@
 
 // IMPORT DES MODULES ############################################################################################## //
 import { fetchBestMovies, fetchMovieDetails, fetchBestMoviesCategory, fetchAllCategories } from "./fetch.js";
-import { sortBestMovies, sortBestMovie, sortMoviesCategory } from "../utils/utils.js";
+import { sortBestMovies, sortMoviesCategory } from "../utils/utils.js";
 import { createElements } from "./constructor.js";
 import { displayElements } from "./display.js";
 import { listenEvents } from "./events.js";
@@ -40,7 +40,7 @@ async function init() {
 
     // Sort les films les mieux noté
     const bestMovies = sortBestMovies(bestMoviesFetch);
-    const bestMoviesSorted =  bestMovies.slice(1, 7);
+    const bestMoviesSorted =  bestMovies.slice(1,7);
 
     // Récupère la Catégorie 1 et ces films
     const category1Name = "History";

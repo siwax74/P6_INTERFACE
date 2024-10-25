@@ -15,7 +15,7 @@
 import { fetchBestMovies, fetchBestMoviesCategory, fetchMovieDetails, fetchMovieByName } from "./fetch.js";
 import { createMovieDetailsCard } from "./constructor.js";
 import {
-  sortBestMovie,
+  sortBestMovies,
   sortMoviesCategory,
   sortMovieFetchByName,
   updateThirdCategory,
@@ -52,8 +52,9 @@ function eventsListenerBestBook(bestMovieElement, protocol, domain, urlApi) {
   const button = bestMovieElement.querySelector(".btn-details");
   button.addEventListener("click", async function () {
     const movies = await fetchBestMovies(protocol, domain, urlApi);
-    const movie = sortBestMovie(movies);
-    const movieDetails = await fetchMovieDetails(protocol, domain, urlApi, movie);
+    const movie = sortBestMovies(movies);
+    const movie_sorted = movie[0];
+    const movieDetails = await fetchMovieDetails(protocol, domain, urlApi, movie_sorted);
     const elementsCreated = createMovieDetailsCard(movieDetails);
     const elementsDisplay = displayMovieDetails(bestMovieElement, elementsCreated);
   });
