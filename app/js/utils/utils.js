@@ -24,7 +24,7 @@ export function sortBestMovies(bestMoviesFetch) {
       }
       return b.votes - a.votes;
     })
-    .slice(0, 7); // Retourne les films de la 2ème à la 7ème place
+    .slice(0, 7);
 }
 
 // TRIE LES FILMS D'UNE CATÉGORIE ET RETOURNE LES 6 MEILLEURS ##################################################### //
