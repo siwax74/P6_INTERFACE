@@ -188,7 +188,7 @@ export function createMovieDetailsCard(movieDetails) {
   const imageUrlElement = createElement("img", { src: movieDetails.image_url });
   // Gestion de l'erreur de chargement de l'image (404 ou autre)
   imageUrlElement.onerror = function () {
-    imageUrlElement.src = "/app/medias/images/no_image.png"; // Chemin vers une image par défaut
+    imageUrlElement.src = "/app/medias/home/images/no_image.png"; // Chemin vers une image par défaut
   };
   elementsCreated.push(imageUrlElement);
 

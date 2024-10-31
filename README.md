@@ -66,6 +66,26 @@ Voici quelques améliorations prévues pour les versions futures :
 - Ajout de bandes annonces;
 - Ajout de publicités;
 
+## 🛠 **Screenshots**
+
+## 📸 **Captures d'Écran - Reponsive **
+
+Voici quelques captures d'écran de l'application en action :
+<div style="display: flex; justify-content: space-around;">
+    <div style="text-align: center;">
+        <h3>Mobil-first</h3>
+        <img src="app/medias/screenshots/Responsive1.png" alt="Screen1" width="300" />
+    </div>
+    <div style="text-align: center;">
+        <h3>Détails</h3>
+        <img src="app/medias/screenshots/Responsive2.png" alt="Screen2" width="500" />
+    </div>
+    <div style="text-align: center;">
+        <h3>Tablet / Laptop</h3>
+        <img src="app/medias/screenshots/Responsive3.png" alt="Screen3" width="720" />
+    </div>
+</div>
+
 ## 📄 **Licences**
 
 Ce projet est sous licence MIT. Consultez le fichier [LICENSE](./LICENSE) pour plus d'informations;

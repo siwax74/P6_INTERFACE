@@ -80,7 +80,7 @@ export function createCardElements(movies, className) {
     imageElement.onerror = function () {
       if (!hasFailed) {
         hasFailed = true;
-        imageElement.src = "/app/medias/images/no_image.png"; // Chemin vers une image par défaut
+        imageElement.src = "/app/medias/home/images/no_image.png"; // Chemin vers une image par défaut
       }
     };
     card.appendChild(imageElement);

@@ -30,7 +30,8 @@ export async function fetchBestMovies(protocol, domain, urlApi) {
     return [];
   }
 }
-// FETCH LES DETAILS D'UN FILM ######################################################################## //
+
+// FETCH LES DETAILS D'UN FILM #################################################################################### //
 export async function fetchMovieDetails(protocol, domain, urlApi, bestMovie) {
   let url = `${protocol}://${domain}/${urlApi}/titles/${bestMovie.id}`;
   try {
